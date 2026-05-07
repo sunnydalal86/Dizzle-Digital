@@ -14,7 +14,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 border-b border-[color:color-mix(in_srgb,var(--color-dd-border)_100%,transparent)] bg-[color:color-mix(in_srgb,var(--color-dd-off-white)_78%,transparent)] shadow-[inset_0_-1px_0_0_rgba(255,255,255,0.85)] backdrop-blur-2xl supports-[backdrop-filter]:bg-[color:color-mix(in_srgb,var(--color-dd-off-white)_68%,transparent)]">
+    <header className="fixed left-0 right-0 top-0 z-50 border-b border-[color:color-mix(in_srgb,var(--color-dd-border)_100%,transparent)] bg-[color:color-mix(in_srgb,var(--color-dd-off-white)_76%,transparent)] shadow-[inset_0_-1px_0_0_rgba(255,255,255,0.72),0_18px_48px_-36px_rgba(42,40,37,0.08)] backdrop-blur-[var(--dd-blur-panel)] supports-[backdrop-filter]:bg-[color:color-mix(in_srgb,var(--color-dd-off-white)_64%,transparent)]">
       <div className="mx-auto flex max-w-[88rem] flex-wrap items-center justify-between gap-x-5 gap-y-4 px-4 py-4 sm:gap-x-7 sm:px-8 lg:gap-x-10 lg:gap-y-3 lg:px-12 xl:px-16">
         <a href="#" className="inline-flex shrink-0 py-0 leading-none transition-opacity hover:opacity-85">
           <img
@@ -35,11 +35,11 @@ export default function Navbar() {
               <a
                 key={l.href}
                 href={l.href}
-                className="group relative border-b border-transparent px-3 py-2 text-[13px] font-medium text-[color:var(--color-dd-muted)] transition-colors hover:text-[color:var(--color-dd-text)]"
+                className="group relative border-b border-transparent px-3 py-2 text-[13px] font-medium text-[color:var(--color-dd-muted)] transition-colors duration-300 [transition-timing-function:var(--dd-motion-soft)] hover:text-[color:var(--color-dd-text)]"
               >
                 <span className="relative z-[1]">{l.label}</span>
                 <span
-                  className="pointer-events-none absolute inset-x-2 -bottom-0.5 h-px origin-left scale-x-0 bg-[color:var(--color-dd-accent)] transition-transform duration-500 ease-out group-hover:scale-x-100"
+                  className="pointer-events-none absolute inset-x-2 -bottom-0.5 h-px origin-left scale-x-0 bg-[color:var(--color-dd-accent)] transition-transform duration-[420ms] [transition-timing-function:var(--dd-motion-smooth)] group-hover:scale-x-100"
                   aria-hidden
                 />
               </a>
@@ -55,7 +55,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="inline-flex shrink-0 rounded-full border border-[color:color-mix(in_srgb,var(--color-dd-border)_100%,transparent)] bg-[color:color-mix(in_srgb,white_70%,transparent)] p-3 text-[color:var(--color-dd-text)] shadow-sm backdrop-blur-md transition-colors hover:border-[color:color-mix(in_srgb,var(--color-dd-accent)_25%,transparent)] lg:hidden"
+          className="inline-flex shrink-0 rounded-full border border-[color:color-mix(in_srgb,var(--color-dd-border)_100%,transparent)] bg-[color:color-mix(in_srgb,white_68%,transparent)] p-3 text-[color:var(--color-dd-text)] shadow-[0_10px_28px_-16px_rgba(42,40,37,0.1)] backdrop-blur-[var(--dd-blur-panel)] transition-colors duration-300 [transition-timing-function:var(--dd-motion-soft)] hover:border-[color:color-mix(in_srgb,var(--color-dd-accent)_20%,transparent)] lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label="Toggle navigation"

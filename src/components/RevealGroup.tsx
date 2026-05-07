@@ -22,7 +22,7 @@ export default function RevealGroup({ children, className }: { children: ReactNo
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -32px 0px' }
+      { threshold: 0.08, rootMargin: '0px 0px -8% 0px' }
     );
     el.querySelectorAll('.reveal-on-scroll').forEach((node) => obs.observe(node));
     return () => obs.disconnect();

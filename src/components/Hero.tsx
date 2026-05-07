@@ -43,16 +43,16 @@ export default function Hero() {
       target.y = (e.clientY - r.top) / Math.max(r.height, 1);
     };
 
-    const applyParallax = (el: HTMLDivElement | null, mx: number, my: number, rz: number, tz = 0) => {
+    const applyParallax = (el: HTMLDivElement | null, mx: number, my: number, rz: number) => {
       if (!el) return;
       const nx = (current.x - 0.5) * 2;
       const ny = (current.y - 0.5) * 2;
-      el.style.transform = `translate3d(${nx * mx}px, ${ny * my}px, ${tz}px) rotate(${rz}deg)`;
+      el.style.transform = `translate3d(${nx * mx}px, ${ny * my}px, 0) rotate(${rz}deg)`;
     };
 
     const tick = () => {
-      current.x += (target.x - current.x) * 0.055;
-      current.y += (target.y - current.y) * 0.055;
+      current.x += (target.x - current.x) * 0.07;
+      current.y += (target.y - current.y) * 0.07;
 
       const r = root.getBoundingClientRect();
       if (cursorRef.current) {
@@ -61,9 +61,9 @@ export default function Hero() {
         cursorRef.current.style.transform = `translate3d(${cx}px, ${cy}px, 0)`;
       }
 
-      applyParallax(parallaxA.current, 22, 17, -5.5, 42);
-      applyParallax(parallaxB.current, -18, 14, 4.25, 88);
-      applyParallax(parallaxC.current, 19, -15, -3.5, 22);
+      applyParallax(parallaxA.current, 18, 14, -5.5);
+      applyParallax(parallaxB.current, -14, 11, 4.25);
+      applyParallax(parallaxC.current, 16, -13, -3.5);
 
       raf = requestAnimationFrame(tick);
     };
@@ -107,11 +107,6 @@ export default function Hero() {
         className="relative flex min-h-[100dvh] flex-col overflow-hidden pt-[clamp(7rem,15vmin,9.75rem)] pb-16 sm:pb-20 lg:pt-[clamp(11rem,18vmin,13rem)] xl:pt-[clamp(12rem,20vmin,15rem)] lg:pb-28"
       >
         <div className="hero-cinematic-bg" aria-hidden />
-        <div className="hero-motion-reel" aria-hidden>
-          <div className="hero-motion-reel__bands" />
-          <div className="hero-motion-reel__scan" />
-        </div>
-        <div className="hero-motion-blur" aria-hidden />
         <div className="hero-cinematic-urban" aria-hidden />
         <div className="hero-cinematic-grid" aria-hidden />
         <div className="hero-cinematic-chrome" aria-hidden />
@@ -119,42 +114,34 @@ export default function Hero() {
         <div className="hero-cinematic-leak hero-cinematic-leak--2" aria-hidden />
         <div className="hero-cinematic-vhs" aria-hidden />
         <div className="hero-cinematic-scan" aria-hidden />
-        <div className="hero-cinematic-sheen" aria-hidden />
-        <div className="hero-cinematic-streaks" aria-hidden>
-          <div className="hero-cinematic-streak" />
-          <div className="hero-cinematic-streak hero-cinematic-streak--2" />
-          <div className="hero-cinematic-streak hero-cinematic-streak--3" />
-        </div>
         <div className="hero-cinematic-vignette" aria-hidden />
 
         <div ref={megaRef} className="hero-mega-field" aria-hidden>
           <span
-            className="hero-mega-word left-[-6%] top-[4%] text-[clamp(5.25rem,20vw,15rem)] sm:left-[-3%]"
+            className="hero-mega-word left-[-5%] top-[5%] text-[clamp(4.875rem,18vw,13.5rem)] sm:left-[-2.5%]"
             style={{ animationDelay: '-3s' }}
           >
             DIGITAL
           </span>
           <span
-            className="hero-mega-word right-[-22%] top-[26%] text-[clamp(4rem,15vw,11.5rem)] sm:right-[-10%]"
+            className="hero-mega-word right-[-20%] top-[27%] text-[clamp(3.75rem,13.5vw,10.25rem)] sm:right-[-9%]"
             style={{ animationDelay: '-1.2s' }}
           >
             MOTION
           </span>
           <span
-            className="hero-mega-word left-[2%] bottom-[24%] text-[clamp(3.5rem,12.5vw,9.5rem)] sm:left-[6%]"
+            className="hero-mega-word left-[3%] bottom-[23%] text-[clamp(3.25rem,11.25vw,8.75rem)] sm:left-[7%]"
             style={{ animationDelay: '-5s' }}
           >
             CREATIVE
           </span>
           <span
-            className="hero-mega-word right-[-8%] bottom-[4%] text-[clamp(4.5rem,16vw,12.5rem)] sm:right-[2%]"
+            className="hero-mega-word right-[-7%] bottom-[5%] text-[clamp(4.25rem,15vw,11.5rem)] sm:right-[3%]"
             style={{ animationDelay: '-7s' }}
           >
             PREMIUM
           </span>
         </div>
-
-        <div className="hero-cinematic-grain" aria-hidden />
 
         <div className="hero-cursor-glow" ref={cursorRef} aria-hidden />
 
@@ -193,7 +180,7 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="hero-mock-stage relative mx-auto min-h-[min(70dvh,640px)] w-full max-w-lg lg:mx-0 lg:max-w-none lg:min-h-[580px]">
+            <div className="relative mx-auto min-h-[min(70dvh,640px)] w-full max-w-lg lg:mx-0 lg:max-w-none lg:min-h-[580px]">
               <div
                 className="pointer-events-none absolute -left-[6%] top-[16%] z-0 hidden h-[48%] w-[54%] rounded-[2rem] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--color-dd-accent-soft)_100%,transparent),transparent_65%)] blur-3xl lg:block"
                 aria-hidden
@@ -205,9 +192,9 @@ export default function Hero() {
 
               <div
                 ref={parallaxA}
-                className="hero-mock-float absolute left-0 top-[0%] z-[3] w-[88%] max-w-[392px] will-change-transform sm:top-[3%] sm:w-[86%] lg:left-[2%] lg:w-[80%] lg:max-w-[418px]"
+                className="absolute left-0 top-[0%] z-[3] w-[88%] max-w-[392px] will-change-transform sm:top-[3%] sm:w-[86%] lg:left-[2%] lg:w-[80%] lg:max-w-[418px]"
               >
-                <div className="hero-mock-tilt hero-mock-tilt--a hero-mock-hover-wrap hero-float-depth">
+                <div className="hero-mock-hover-wrap hero-float-depth">
                   <div className="hero-glass-mock overflow-hidden rounded-2xl sm:rounded-[1.35rem]">
                     <MockChrome url="premiumbarbercollege.com" />
                     <div className="relative aspect-[16/15] overflow-hidden bg-[linear-gradient(180deg,#2c2622_0%,#1a1816_100%)]">
@@ -241,9 +228,9 @@ export default function Hero() {
 
               <div
                 ref={parallaxB}
-                className="hero-mock-float absolute right-[-2%] top-[36%] z-[4] w-[74%] max-w-[348px] will-change-transform sm:right-[2%] lg:top-[34%] lg:w-[70%]"
+                className="absolute right-[-2%] top-[36%] z-[4] w-[74%] max-w-[348px] will-change-transform sm:right-[2%] lg:top-[34%] lg:w-[70%]"
               >
-                <div className="hero-mock-tilt hero-mock-tilt--b hero-mock-hover-wrap hero-float-depth--b">
+                <div className="hero-mock-hover-wrap hero-float-depth--b">
                   <div className="hero-glass-mock overflow-hidden rounded-2xl sm:rounded-[1.35rem]">
                     <MockChrome url="pristineconstruction.co" />
                     <div className="relative aspect-[16/14] overflow-hidden bg-[linear-gradient(180deg,#ebe4d8_0%,#d9d1c4_100%)]">
@@ -279,9 +266,9 @@ export default function Hero() {
 
               <div
                 ref={parallaxC}
-                className="hero-mock-float absolute bottom-[0%] left-[6%] z-[5] w-[66%] max-w-[308px] will-change-transform sm:bottom-[2%] sm:left-[12%] lg:bottom-[3%] lg:left-[16%] lg:w-[60%] lg:max-w-[328px]"
+                className="absolute bottom-[0%] left-[6%] z-[5] w-[66%] max-w-[308px] will-change-transform sm:bottom-[2%] sm:left-[12%] lg:bottom-[3%] lg:left-[16%] lg:w-[60%] lg:max-w-[328px]"
               >
-                <div className="hero-mock-tilt hero-mock-tilt--c hero-mock-hover-wrap hero-float-depth--c">
+                <div className="hero-mock-hover-wrap hero-float-depth--c">
                   <div className="hero-glass-mock overflow-hidden rounded-2xl sm:rounded-[1.35rem]">
                     <MockChrome url="eliteprecisiongpr.com" />
                     <div className="relative aspect-[16/14] overflow-hidden bg-[linear-gradient(160deg,#1f2328_0%,#121418_100%)]">
