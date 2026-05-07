@@ -14,9 +14,9 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 border-b border-stone-700/55 bg-[color:color-mix(in_srgb,var(--color-dd-bg)_82%,transparent)] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] backdrop-blur-xl supports-[backdrop-filter]:bg-[color:color-mix(in_srgb,var(--color-dd-bg)_76%,transparent)]">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-5 gap-y-4 px-4 py-3.5 sm:gap-x-7 sm:px-6 sm:py-4 lg:gap-x-10 lg:gap-y-3 lg:px-8 lg:py-5">
-        <a href="#" className="inline-flex shrink-0 py-0 leading-none">
+    <header className="fixed left-0 right-0 top-0 z-50 border-b border-[color:color-mix(in_srgb,var(--color-dd-border)_100%,transparent)] bg-[color:color-mix(in_srgb,var(--color-dd-off-white)_78%,transparent)] shadow-[inset_0_-1px_0_0_rgba(255,255,255,0.85)] backdrop-blur-2xl supports-[backdrop-filter]:bg-[color:color-mix(in_srgb,var(--color-dd-off-white)_68%,transparent)]">
+      <div className="mx-auto flex max-w-[88rem] flex-wrap items-center justify-between gap-x-5 gap-y-4 px-4 py-4 sm:gap-x-7 sm:px-8 lg:gap-x-10 lg:gap-y-3 lg:px-12 xl:px-16">
+        <a href="#" className="inline-flex shrink-0 py-0 leading-none transition-opacity hover:opacity-85">
           <img
             src="/dizzle-digital-logo.png"
             alt="Dizzle Digital"
@@ -35,23 +35,27 @@ export default function Navbar() {
               <a
                 key={l.href}
                 href={l.href}
-                className="border-b-2 border-transparent px-3 py-2.5 text-sm font-medium text-stone-400 transition-colors hover:border-[color:color-mix(in_srgb,var(--color-dd-accent)_65%,transparent)] hover:text-stone-100"
+                className="group relative border-b border-transparent px-3 py-2 text-[13px] font-medium text-[color:var(--color-dd-muted)] transition-colors hover:text-[color:var(--color-dd-text)]"
               >
-                {l.label}
+                <span className="relative z-[1]">{l.label}</span>
+                <span
+                  className="pointer-events-none absolute inset-x-2 -bottom-0.5 h-px origin-left scale-x-0 bg-[color:var(--color-dd-accent)] transition-transform duration-500 ease-out group-hover:scale-x-100"
+                  aria-hidden
+                />
               </a>
             ))}
           </nav>
 
           <div className="shrink-0 lg:pl-2 xl:pl-3">
-            <Button variant="primary" href="#contact" className="!py-3 !px-6 !text-sm xl:!px-7 xl:!text-[15px]">
-              Start a Project
+            <Button variant="primary" href="#contact" className="!py-3 !text-[11px] !tracking-[0.2em] lg:!px-7 xl:!px-8">
+              Start a project
             </Button>
           </div>
         </div>
 
         <button
           type="button"
-          className="inline-flex shrink-0 rounded-lg border border-stone-700/55 bg-[color:color-mix(in_srgb,var(--color-dd-elevated)_55%,transparent)] p-2.5 text-stone-200 lg:hidden"
+          className="inline-flex shrink-0 rounded-full border border-[color:color-mix(in_srgb,var(--color-dd-border)_100%,transparent)] bg-[color:color-mix(in_srgb,white_70%,transparent)] p-3 text-[color:var(--color-dd-text)] shadow-sm backdrop-blur-md transition-colors hover:border-[color:color-mix(in_srgb,var(--color-dd-accent)_25%,transparent)] lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label="Toggle navigation"
@@ -69,7 +73,7 @@ export default function Navbar() {
 
       <div
         id="mobile-menu"
-        className={`border-t border-stone-700/55 bg-[color:color-mix(in_srgb,var(--color-dd-bg)_94%,transparent)] px-4 py-4 backdrop-blur-xl lg:hidden ${
+        className={`border-t border-[color:color-mix(in_srgb,var(--color-dd-border)_100%,transparent)] bg-[color:color-mix(in_srgb,var(--color-dd-off-white)_94%,transparent)] px-4 py-6 backdrop-blur-2xl lg:hidden ${
           open ? 'block' : 'hidden'
         }`}
       >
@@ -78,14 +82,14 @@ export default function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="rounded-lg border-l-2 border-transparent px-3 py-3 text-sm font-medium text-stone-300 transition-colors hover:border-[color:color-mix(in_srgb,var(--color-dd-accent)_55%,transparent)] hover:bg-white/[0.04] hover:text-white"
+              className="rounded-xl border border-transparent px-4 py-3 text-sm font-medium text-[color:var(--color-dd-muted)] transition-colors hover:border-[color:color-mix(in_srgb,var(--color-dd-accent)_18%,transparent)] hover:bg-[color:var(--color-dd-cream)] hover:text-[color:var(--color-dd-text)]"
               onClick={() => setOpen(false)}
             >
               {l.label}
             </a>
           ))}
-          <Button variant="primary" href="#contact" className="mt-2 !py-3" onClick={() => setOpen(false)}>
-            Start a Project
+          <Button variant="primary" href="#contact" className="mt-3 !py-3.5" onClick={() => setOpen(false)}>
+            Start a project
           </Button>
         </nav>
       </div>

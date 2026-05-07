@@ -19,15 +19,15 @@ interface AnchorBtnProps extends BaseProps, Omit<AnchorHTMLAttributes<HTMLAnchor
 export type ButtonProps = ButtonNativeProps | AnchorBtnProps;
 
 const base =
-  'inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-dd-accent)] disabled:opacity-50';
+  'inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 text-[13px] font-semibold uppercase tracking-[0.18em] transition-all duration-500 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:color-mix(in_srgb,var(--color-dd-accent)_55%,transparent)] disabled:opacity-50';
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    'bg-[color:var(--color-dd-accent)] text-neutral-950 shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset] hover:bg-[color:var(--color-dd-accent-hover)] hover:-translate-y-0.5 hover:shadow-[0_12px_40px_-12px_rgba(201,136,85,0.42)] active:translate-y-0',
+    'bg-[color:var(--color-dd-accent)] text-[color:var(--color-dd-off-white)] shadow-[0_14px_40px_-12px_color-mix(in_srgb,var(--color-dd-accent)_55%,transparent),0_0_0_1px_rgba(255,255,255,0.18)_inset] hover:bg-[color:var(--color-dd-accent-hover)] hover:-translate-y-0.5 hover:shadow-[0_22px_48px_-14px_color-mix(in_srgb,var(--color-dd-accent)_48%,transparent),0_0_40px_-12px_color-mix(in_srgb,var(--color-dd-accent)_25%,transparent)] active:translate-y-0 active:shadow-[0_10px_28px_-14px_color-mix(in_srgb,var(--color-dd-accent)_40%,transparent)]',
   secondary:
-    'border border-stone-600/80 bg-transparent text-stone-100 hover:border-stone-500 hover:bg-white/[0.04] hover:-translate-y-0.5 active:translate-y-0',
+    'border border-[color:color-mix(in_srgb,var(--color-dd-text)_12%,transparent)] bg-[color:color-mix(in_srgb,white_55%,transparent)] text-[color:var(--color-dd-text)] shadow-[0_12px_32px_-20px_rgba(42,40,37,0.18)] backdrop-blur-sm hover:border-[color:color-mix(in_srgb,var(--color-dd-accent)_28%,transparent)] hover:bg-[color:var(--color-dd-off-white)] hover:-translate-y-0.5 hover:shadow-[0_22px_48px_-24px_rgba(42,40,37,0.14),0_0_36px_-16px_color-mix(in_srgb,var(--color-dd-accent)_18%,transparent)] active:translate-y-0',
   ghost:
-    'border border-transparent bg-transparent text-stone-400 hover:text-stone-100 hover:bg-white/[0.04]',
+    'border border-transparent bg-transparent text-[color:var(--color-dd-muted)] hover:text-[color:var(--color-dd-text)] hover:bg-[color:color-mix(in_srgb,var(--color-dd-cream)_80%,transparent)]',
 };
 
 export default function Button(props: ButtonProps) {

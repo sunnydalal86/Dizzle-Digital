@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent, type FormEvent } from 'react';
+import { useState, type ChangeEvent, type FormEvent, type CSSProperties } from 'react';
 import Section from './Section';
 import Button from './Button';
 
@@ -31,18 +31,24 @@ export default function Contact() {
   }
 
   return (
-    <Section id="contact" className="scroll-mt-32 pb-28 pt-8 sm:scroll-mt-36 sm:pb-36">
-      <div className="mx-auto grid max-w-6xl gap-16 px-4 sm:px-6 lg:grid-cols-2 lg:items-start lg:gap-20 lg:px-8">
-        <div className="reveal-on-scroll lg:sticky lg:top-36">
-          <p className="font-kicker">Contact</p>
-          <h2 className="font-[family-name:var(--font-display)] mt-5 text-4xl font-extrabold tracking-tight text-stone-50 sm:text-5xl">
-            Start a project.
+    <Section
+      id="contact"
+      className="scroll-mt-32 bg-[linear-gradient(180deg,var(--color-dd-bg)_0%,var(--color-dd-off-white)_100%)] pb-28 pt-12 sm:scroll-mt-36 sm:pb-40 sm:pt-16 lg:pb-48"
+    >
+      <div className="mx-auto grid max-w-[88rem] gap-24 px-4 sm:px-8 lg:grid-cols-2 lg:items-start lg:gap-28 lg:px-12 xl:gap-32 xl:px-16">
+        <div className="reveal-on-scroll lg:sticky lg:top-40 lg:max-w-lg">
+          <p className="font-kicker text-[color:var(--color-dd-muted)]">Contact</p>
+          <h2 className="mt-8 font-[family-name:var(--font-display)] text-[clamp(2.75rem,5vw,4rem)] font-semibold leading-[1.04] tracking-[-0.02em] text-[color:var(--color-dd-text)]">
+            Start a{' '}
+            <span className="font-normal italic text-[color:color-mix(in_srgb,var(--color-dd-accent)_88%,var(--color-dd-text))]">
+              project.
+            </span>
           </h2>
-          <p className="mt-8 text-lg leading-relaxed text-stone-400">
-            Share your business, timeline, and what a successful launch looks like. Prefer email direct?{' '}
+          <p className="mt-10 text-lg font-light leading-[1.75] text-[color:var(--color-dd-muted)]" style={{ fontWeight: 300 }}>
+            Share ambition, timeline, and what excellence looks like on your terms. Prefer to write direct?{' '}
             <a
               href="mailto:hello@dizzledigital.com"
-              className="font-medium text-[color:var(--color-dd-accent)] underline-offset-4 hover:underline"
+              className="font-medium text-[color:var(--color-dd-accent)] underline decoration-[color:color-mix(in_srgb,var(--color-dd-accent)_45%,transparent)] underline-offset-[5px] transition-colors hover:decoration-[color:var(--color-dd-accent)]"
             >
               hello@dizzledigital.com
             </a>
@@ -51,9 +57,10 @@ export default function Contact() {
 
         <form
           onSubmit={handleSubmit}
-          className="reveal-on-scroll premium-card space-y-6 p-8 hover:!translate-y-0 sm:p-10"
+          className="reveal-on-scroll premium-card space-y-8 p-10 hover:!translate-y-0 sm:p-12"
+          style={{ transitionDelay: '80ms' } as CSSProperties}
         >
-          <div className="grid gap-6 sm:grid-cols-2">
+          <div className="grid gap-8 sm:grid-cols-2">
             <Field label="Name" name="name" value={form.name} required onChange={handleChange} autoComplete="name" />
             <Field
               label="Business name"
@@ -92,7 +99,7 @@ export default function Contact() {
             rows={5}
           />
 
-          <div className="flex flex-wrap items-center gap-4 pt-2">
+          <div className="flex flex-wrap items-center gap-6 pt-2">
             <Button type="submit" variant="primary">
               Send inquiry
             </Button>
@@ -102,8 +109,8 @@ export default function Contact() {
               </span>
             )}
           </div>
-          <p className="text-xs text-stone-500">
-            Submits via your email client—no middleware, no spam funnel.
+          <p className="text-xs font-light text-[color:var(--color-dd-muted)]" style={{ fontWeight: 300 }}>
+            Submits through your inbox — intentional, transparent, zero middleman drip.
           </p>
         </form>
       </div>
@@ -135,10 +142,10 @@ function Field({
   placeholder?: string;
 }) {
   const cls =
-    'mt-2 w-full rounded-xl border border-stone-700/50 bg-[color:var(--color-dd-surface)] px-4 py-3.5 text-sm text-stone-50 placeholder:text-stone-600 outline-none ring-1 ring-transparent transition focus:border-[color:var(--color-dd-accent)]/40 focus:ring-[color:var(--color-dd-accent)]/15';
+    'mt-2 w-full rounded-2xl border border-[color:color-mix(in_srgb,var(--color-dd-border)_180%,transparent)] bg-[color:color-mix(in_srgb,var(--color-dd-off-white)_92%,white)] px-4 py-3.5 text-sm text-[color:var(--color-dd-text)] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.65)] outline-none ring-2 ring-transparent transition placeholder:text-[color:color-mix(in_srgb,var(--color-dd-muted)_55%,transparent)] focus:border-[color:color-mix(in_srgb,var(--color-dd-accent)_32%,transparent)] focus:ring-[color:color-mix(in_srgb,var(--color-dd-accent-soft)_100%,transparent)]';
 
   return (
-    <label className="block text-sm font-medium text-stone-300">
+    <label className="block text-[13px] font-medium uppercase tracking-[0.12em] text-[color:var(--color-dd-muted)]">
       {label}
       {textarea ? (
         <textarea
@@ -147,7 +154,7 @@ function Field({
           onChange={onChange}
           required={required}
           rows={rows ?? 5}
-          className={`${cls} min-h-[140px] resize-y`}
+          className={`${cls} min-h-[150px] resize-y`}
           autoComplete={autoComplete}
         />
       ) : (
