@@ -2,10 +2,11 @@ import { useState } from 'react';
 import Button from './Button';
 
 const links = [
-  { href: '#portfolio', label: 'Portfolio' },
+  { href: '#portfolio', label: 'Work' },
   { href: '#services', label: 'Services' },
+  { href: '#value', label: 'Value' },
   { href: '#process', label: 'Process' },
-  { href: '#packages', label: 'Packages' },
+  { href: '#pricing', label: 'Pricing' },
   { href: '#contact', label: 'Contact' },
 ];
 
@@ -13,45 +14,44 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/[0.06] bg-neutral-950/70 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:h-[4.25rem] sm:px-6 lg:px-8">
-        <a href="#" className="group flex items-center gap-3">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-neutral-900 ring-1 ring-white/10">
-            <span className="font-[family-name:var(--font-display)] text-lg font-extrabold tracking-tight text-white">
-              D<span className="text-sky-400">.</span>
-            </span>
-          </span>
-          <div className="flex flex-col leading-tight">
-            <span className="font-[family-name:var(--font-display)] text-sm font-bold tracking-wide text-neutral-50 sm:text-base">
-              Dizzle Digital
-            </span>
-            <span className="hidden text-[11px] font-medium text-neutral-500 sm:block">
-              Websites without the corporate stiffness
-            </span>
-          </div>
+    <header className="fixed left-0 right-0 top-0 z-50 border-b border-stone-700/55 bg-[color:color-mix(in_srgb,var(--color-dd-bg)_82%,transparent)] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] backdrop-blur-xl supports-[backdrop-filter]:bg-[color:color-mix(in_srgb,var(--color-dd-bg)_76%,transparent)]">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-5 gap-y-4 px-4 py-3.5 sm:gap-x-7 sm:px-6 sm:py-4 lg:gap-x-10 lg:gap-y-3 lg:px-8 lg:py-5">
+        <a href="#" className="inline-flex shrink-0 py-0 leading-none">
+          <img
+            src="/dizzle-digital-logo.png"
+            alt="Dizzle Digital"
+            width={670}
+            height={228}
+            decoding="async"
+            loading="eager"
+            sizes="(max-width: 1024px) 56vw, 440px"
+            className="block h-auto w-[clamp(11.5rem,58vmin,17rem)] max-w-[min(52vw,calc(100vw-8rem))] object-contain object-left sm:w-[clamp(13rem,48vmin,20rem)] md:w-[clamp(14rem,42vmin,22rem)] lg:w-[clamp(13rem,26vw,24rem)] xl:w-[clamp(15rem,22vw,28rem)] 2xl:w-[clamp(16rem,18vw,32rem)]"
+          />
         </a>
 
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="rounded-full px-3 py-2 text-sm font-medium text-neutral-400 transition-colors hover:bg-white/[0.06] hover:text-white"
-            >
-              {l.label}
-            </a>
-          ))}
-        </nav>
+        <div className="hidden min-w-0 flex-1 flex-wrap items-center justify-end gap-x-2 gap-y-2 sm:gap-x-3 lg:flex xl:flex-nowrap xl:gap-x-4">
+          <nav className="flex flex-wrap items-center justify-end gap-x-1 gap-y-2 sm:gap-x-2 xl:flex-nowrap" aria-label="Primary">
+            {links.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                className="border-b-2 border-transparent px-3 py-2.5 text-sm font-medium text-stone-400 transition-colors hover:border-[color:color-mix(in_srgb,var(--color-dd-accent)_65%,transparent)] hover:text-stone-100"
+              >
+                {l.label}
+              </a>
+            ))}
+          </nav>
 
-        <div className="hidden md:block">
-          <Button variant="primary" href="#contact" className="!py-2.5 !text-sm">
-            Start a project
-          </Button>
+          <div className="shrink-0 lg:pl-2 xl:pl-3">
+            <Button variant="primary" href="#contact" className="!py-3 !px-6 !text-sm xl:!px-7 xl:!text-[15px]">
+              Start a Project
+            </Button>
+          </div>
         </div>
 
         <button
           type="button"
-          className="inline-flex rounded-lg border border-white/10 bg-white/5 p-2 text-neutral-200 md:hidden"
+          className="inline-flex shrink-0 rounded-lg border border-stone-700/55 bg-[color:color-mix(in_srgb,var(--color-dd-elevated)_55%,transparent)] p-2.5 text-stone-200 lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label="Toggle navigation"
@@ -69,7 +69,7 @@ export default function Navbar() {
 
       <div
         id="mobile-menu"
-        className={`border-t border-white/[0.06] bg-neutral-950/95 px-4 py-4 backdrop-blur-xl md:hidden ${
+        className={`border-t border-stone-700/55 bg-[color:color-mix(in_srgb,var(--color-dd-bg)_94%,transparent)] px-4 py-4 backdrop-blur-xl lg:hidden ${
           open ? 'block' : 'hidden'
         }`}
       >
@@ -78,14 +78,14 @@ export default function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="rounded-lg px-3 py-3 text-sm font-medium text-neutral-300 hover:bg-white/5 hover:text-white"
+              className="rounded-lg border-l-2 border-transparent px-3 py-3 text-sm font-medium text-stone-300 transition-colors hover:border-[color:color-mix(in_srgb,var(--color-dd-accent)_55%,transparent)] hover:bg-white/[0.04] hover:text-white"
               onClick={() => setOpen(false)}
             >
               {l.label}
             </a>
           ))}
           <Button variant="primary" href="#contact" className="mt-2 !py-3" onClick={() => setOpen(false)}>
-            Start a project
+            Start a Project
           </Button>
         </nav>
       </div>

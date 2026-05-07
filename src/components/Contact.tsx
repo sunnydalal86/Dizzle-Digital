@@ -21,9 +21,9 @@ export default function Contact() {
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    const subject = encodeURIComponent(`New project inquiry — ${form.business || 'Unknown business'}`);
+    const subject = encodeURIComponent(`Project inquiry — ${form.business || 'Unknown business'}`);
     const body = encodeURIComponent(
-      `Name: ${form.name}\nBusiness: ${form.business}\nEmail: ${form.email}\nWebsite: ${form.website || '(none)'}\n\nNeeds:\n${form.message}`
+      `Name: ${form.name}\nBusiness: ${form.business}\nEmail: ${form.email}\nWebsite: ${form.website || '(none)'}\n\nProject details:\n${form.message}`
     );
     window.location.href = `mailto:hello@dizzledigital.com?subject=${subject}&body=${body}`;
     setSubmitted(true);
@@ -31,25 +31,29 @@ export default function Contact() {
   }
 
   return (
-    <Section id="contact" className="scroll-mt-28 pb-28 pt-10 sm:pb-36">
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:items-start lg:gap-16 lg:px-8">
-        <div className="reveal-on-scroll lg:sticky lg:top-28">
-          <p className="text-sm font-medium tracking-wide text-sky-400/90">Contact</p>
-          <h2 className="font-[family-name:var(--font-display)] mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-[2.65rem]">
-            Tell us what you&apos;re working on
+    <Section id="contact" className="scroll-mt-32 pb-28 pt-8 sm:scroll-mt-36 sm:pb-36">
+      <div className="mx-auto grid max-w-6xl gap-16 px-4 sm:px-6 lg:grid-cols-2 lg:items-start lg:gap-20 lg:px-8">
+        <div className="reveal-on-scroll lg:sticky lg:top-36">
+          <p className="font-kicker">Contact</p>
+          <h2 className="font-[family-name:var(--font-display)] mt-5 text-4xl font-extrabold tracking-tight text-stone-50 sm:text-5xl">
+            Start a project.
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-neutral-400">
-            No homework overload—just the basics. Your niche, timing, and what would make this a win. Prefer email?
-            Still good:{' '}
-            <a href="mailto:hello@dizzledigital.com" className="text-sky-400 underline-offset-4 hover:text-sky-300 hover:underline">
+          <p className="mt-8 text-lg leading-relaxed text-stone-400">
+            Share your business, timeline, and what a successful launch looks like. Prefer email direct?{' '}
+            <a
+              href="mailto:hello@dizzledigital.com"
+              className="font-medium text-[color:var(--color-dd-accent)] underline-offset-4 hover:underline"
+            >
               hello@dizzledigital.com
             </a>
-            .
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="reveal-on-scroll space-y-5 rounded-2xl border border-white/[0.08] bg-neutral-950/55 p-6 shadow-[0_20px_60px_-32px_rgba(0,0,0,0.9)] sm:p-8">
-          <div className="grid gap-5 sm:grid-cols-2">
+        <form
+          onSubmit={handleSubmit}
+          className="reveal-on-scroll premium-card space-y-6 p-8 hover:!translate-y-0 sm:p-10"
+        >
+          <div className="grid gap-6 sm:grid-cols-2">
             <Field label="Name" name="name" value={form.name} required onChange={handleChange} autoComplete="name" />
             <Field
               label="Business name"
@@ -70,7 +74,7 @@ export default function Contact() {
             autoComplete="email"
           />
           <Field
-            label="Website URL if you have one"
+            label="Current website (optional)"
             type="url"
             name="website"
             value={form.website}
@@ -79,28 +83,27 @@ export default function Contact() {
             placeholder="https://"
           />
           <Field
-            label="What do you need help with?"
+            label="What are we building?"
             name="message"
             value={form.message}
             required
             onChange={handleChange}
             textarea
-            rows={4}
+            rows={5}
           />
 
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <Button type="submit" variant="primary">
-              Send it
+              Send inquiry
             </Button>
             {submitted && (
-              <span className="text-sm font-medium text-sky-400" role="status">
-                Opening your email app…
+              <span className="text-sm font-medium text-[color:var(--color-dd-accent)]" role="status">
+                Opening your mail app…
               </span>
             )}
           </div>
-          <p className="text-xs text-neutral-500">
-            This opens your mail app with everything prefilled—low-tech, zero spam bots. Want a fancy form later? We can
-            wire that up.
+          <p className="text-xs text-stone-500">
+            Submits via your email client—no middleware, no spam funnel.
           </p>
         </form>
       </div>
@@ -132,10 +135,10 @@ function Field({
   placeholder?: string;
 }) {
   const cls =
-    'mt-2 w-full rounded-xl border border-white/[0.1] bg-white/[0.03] px-4 py-3 text-sm text-neutral-50 placeholder:text-neutral-600 outline-none ring-1 ring-transparent transition focus:border-sky-400/50 focus:bg-white/[0.05] focus:ring-sky-400/30';
+    'mt-2 w-full rounded-xl border border-stone-700/50 bg-[color:var(--color-dd-surface)] px-4 py-3.5 text-sm text-stone-50 placeholder:text-stone-600 outline-none ring-1 ring-transparent transition focus:border-[color:var(--color-dd-accent)]/40 focus:ring-[color:var(--color-dd-accent)]/15';
 
   return (
-    <label className="block text-sm font-medium text-neutral-300">
+    <label className="block text-sm font-medium text-stone-300">
       {label}
       {textarea ? (
         <textarea
@@ -144,7 +147,7 @@ function Field({
           onChange={onChange}
           required={required}
           rows={rows ?? 5}
-          className={`${cls} min-h-[120px] resize-y`}
+          className={`${cls} min-h-[140px] resize-y`}
           autoComplete={autoComplete}
         />
       ) : (

@@ -19,15 +19,15 @@ interface AnchorBtnProps extends BaseProps, Omit<AnchorHTMLAttributes<HTMLAnchor
 export type ButtonProps = ButtonNativeProps | AnchorBtnProps;
 
 const base =
-  'inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400 disabled:opacity-50';
+  'inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-dd-accent)] disabled:opacity-50';
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    'bg-gradient-to-br from-sky-400 via-sky-500 to-blue-600 text-neutral-950 shadow-[0_0_24px_-4px_rgba(56,189,248,0.55)] hover:shadow-[0_0_36px_-2px_rgba(56,189,248,0.65)] hover:-translate-y-0.5 active:translate-y-0',
+    'bg-[color:var(--color-dd-accent)] text-neutral-950 shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset] hover:bg-[color:var(--color-dd-accent-hover)] hover:-translate-y-0.5 hover:shadow-[0_12px_40px_-12px_rgba(201,136,85,0.42)] active:translate-y-0',
   secondary:
-    'border border-white/15 bg-white/5 text-neutral-50 backdrop-blur-sm hover:bg-white/10 hover:border-white/25 hover:-translate-y-0.5',
+    'border border-stone-600/80 bg-transparent text-stone-100 hover:border-stone-500 hover:bg-white/[0.04] hover:-translate-y-0.5 active:translate-y-0',
   ghost:
-    'border border-transparent bg-transparent text-neutral-300 hover:text-white hover:bg-white/5',
+    'border border-transparent bg-transparent text-stone-400 hover:text-stone-100 hover:bg-white/[0.04]',
 };
 
 export default function Button(props: ButtonProps) {

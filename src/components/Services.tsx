@@ -3,61 +3,62 @@ import Section from './Section';
 const services = [
   {
     title: 'Premium Website Builds',
-    body: 'Sites built around your story—not a generic template dump. Clear sections, strong visuals, and paths that lead to calls and forms.',
-    icon: '◇',
+    outcome:
+      'A flagship digital presence that frames your services clearly and moves visitors toward contacting you.',
   },
   {
     title: 'Website Revamps',
-    body: 'If your site feels stuck in 2014, we tidy the UX, typography, and imagery so people stick around instead of bouncing.',
-    icon: '◆',
+    outcome:
+      'An elevated experience from your current site—tighter story, stronger visuals, less friction on mobile.',
   },
   {
-    title: 'Local SEO Setup',
-    body: 'Basics that help neighbors find you: sensible titles, crawl-friendly structure, and maps-ready groundwork—not keyword stuffing.',
-    icon: '◎',
+    title: 'Local SEO Foundations',
+    outcome:
+      'Discoverability where it matters: structured pages, titles, and technical basics that support local search.',
   },
   {
-    title: 'Lead Capture Setup',
-    body: 'Buttons and flows that match how people actually hire you—whether that’s “book now,” “get a quote,” or “call the shop.”',
-    icon: '✦',
+    title: 'Lead Capture Systems',
+    outcome:
+      'Forms, calls-to-action, and page flow aligned with how your customers actually hire you.',
   },
   {
-    title: 'Portfolio & Gallery Experiences',
-    body: 'Show the work without bogging down the pitch—great for builders, schools, and anyone with proof to flex.',
-    icon: '▤',
+    title: 'Portfolio & Project Galleries',
+    outcome:
+      'Proof that sells—project showcases that build trust without burying your pitch.',
   },
   {
     title: 'Launch, Hosting & Support',
-    body: 'Domains, deploys, HTTPS, backups—the unglamorous stuff—handled so launch day feels calm instead of chaotic.',
-    icon: '⬡',
+    outcome:
+      'Confident go-live: hosting setup, SSL, performance checks, and a partner for what comes next.',
   },
 ];
 
 export default function Services() {
   return (
-    <Section id="services" className="scroll-mt-28 border-y border-white/[0.05] bg-neutral-950/40 py-20 sm:py-28">
+    <Section id="services" className="scroll-mt-32 border-y border-stone-800/45 bg-[color:var(--color-dd-surface)] py-24 sm:scroll-mt-36 sm:py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="reveal-on-scroll max-w-2xl">
-          <p className="text-sm font-medium tracking-wide text-sky-400/90">What we actually do</p>
-          <h2 className="font-[family-name:var(--font-display)] mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-[2.65rem]">
-            The helpful stuff—minus the buzzwords
+          <p className="font-kicker">Capabilities</p>
+          <h2 className="font-[family-name:var(--font-display)] mt-5 text-4xl font-extrabold tracking-tight text-stone-50 sm:text-5xl">
+            Outcomes, not deliverable lists.
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-neutral-400 lg:text-lg">
-            Besides debating font pairings and drinking too much coffee, we focus on one question: does this make someone
-            trust you faster and reach out with less friction—especially on a phone?
+          <p className="mt-6 text-lg leading-relaxed text-stone-400">
+            Everything ties back to credibility, clarity, and qualified inquiries.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
             <div
               key={s.title}
-              className={`reveal-on-scroll group rounded-2xl border border-white/[0.06] bg-gradient-to-b from-white/[0.04] to-transparent p-7 transition-all duration-300 hover:border-sky-400/35 hover:bg-white/[0.05]`}
+              className="reveal-on-scroll premium-card p-8"
               style={{ transitionDelay: `${(i % 3) * 40}ms` }}
             >
-              <span className="text-xl text-sky-400/90">{s.icon}</span>
-              <h3 className="font-[family-name:var(--font-display)] mt-4 text-lg font-semibold text-white">{s.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-400">{s.body}</p>
+              <div className="h-px w-10 bg-[color:var(--color-dd-accent)]/55" />
+              <h3 className="font-[family-name:var(--font-display)] mt-6 text-lg font-bold text-stone-50">
+                {s.title}
+              </h3>
+              <p className="mt-4 text-sm leading-relaxed text-stone-400">{s.outcome}</p>
             </div>
           ))}
         </div>
