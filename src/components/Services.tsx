@@ -3,34 +3,29 @@ import Section from './Section';
 
 const services = [
   {
-    title: 'Premium Website Builds',
+    title: 'Conversion-focused websites',
     outcome:
-      'A custom site that frames your offer clearly — visitors understand why you are the right fit, see proof, and know exactly what to do next.',
+      'Visitors land with a sharp read on your offer, see why you are the credible choice, and move to inquiry or booking — not bounce after a skim.',
   },
   {
-    title: 'Website Revamps',
+    title: 'Local business positioning',
     outcome:
-      'Level up from the site you have: clearer story, stronger visuals, and smoother mobile — without the generic template look.',
+      'Your business reads as the obvious option for people hiring in your area: clear relevance, trustworthy proof, and a story that stacks up next to competitors.',
   },
   {
-    title: 'Local SEO Foundations',
+    title: 'Premium visual identity',
     outcome:
-      'Get found where people hire: clean page structure, strong titles, and technical basics that support real local search.',
+      'Prospects feel caliber before they read a full sentence — a cohesive look that earns trust fast and separates you from template-and-font-pair energy.',
   },
   {
-    title: 'Lead Capture Systems',
+    title: 'Mobile optimization',
     outcome:
-      'Forms, calls-to-action, and page flow aligned with how clients actually choose a partner — fewer dead ends, more qualified inquiries.',
+      'Most of your traffic holds a phone: fast loads, readable type, and friction-free navigation so you are not losing leads to pinch-zoom or slow pages.',
   },
   {
-    title: 'Portfolio & Project Galleries',
+    title: 'Lead generation systems',
     outcome:
-      'Project galleries that show your work with depth and polish — proof that supports the sale without cluttering the story.',
-  },
-  {
-    title: 'Launch, Hosting & Support',
-    outcome:
-      'A calm launch: SSL, speed checks, backups, and a clear plan for updates after you go live.',
+      'Qualified inquiries land in your inbox with context — page flow, calls-to-action, and follow-up paths aligned with how serious clients actually decide.',
   },
 ];
 
@@ -42,15 +37,15 @@ export default function Services() {
     >
       <div className="relative z-[1] mx-auto max-w-[88rem] px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="reveal-on-scroll mx-auto max-w-3xl text-center">
-          <p className="font-kicker text-[color:var(--color-dd-muted)]">Capabilities</p>
+          <p className="font-kicker text-[color:var(--color-dd-muted)]">Outcomes</p>
           <h2 className="mt-7 font-[family-name:var(--font-display)] text-[clamp(2.875rem,5.35vw,4.25rem)] font-semibold leading-[1.03] tracking-[-0.022em] text-[color:var(--color-dd-text)]">
-            What you get,{' '}
+            What changes for your business,{' '}
             <span className="font-normal italic text-[color:color-mix(in_srgb,var(--color-dd-accent)_88%,var(--color-dd-text))]">
-              in plain language.
+              explained without jargon.
             </span>
           </h2>
           <p className="mx-auto mt-10 max-w-2xl text-[1.0625rem] font-light leading-[1.72] text-[color:color-mix(in_srgb,var(--color-dd-muted)_94%,var(--color-dd-text))]" style={{ fontWeight: 300 }}>
-            Every engagement is built around credibility, clarity, and inquiries that respect your time.
+            We sell outcomes — credibility, clarity, and inquiries that respect your time — not a checklist of deliverables.
           </p>
         </div>
 

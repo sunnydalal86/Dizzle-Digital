@@ -4,7 +4,8 @@ const steps = [
   {
     phase: '01',
     title: 'Strategy',
-    detail: 'Offer, buyer, ambition — pages earn their placement on purpose.',
+    detail:
+      'We align on offer, buyer, and what success looks like — so every page has a deliberate job before design starts.',
   },
   {
     phase: '02',

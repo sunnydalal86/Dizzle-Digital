@@ -114,6 +114,7 @@ const projects = [
     stack: [
       'Squarespace → custom revamp',
       'Branding',
+      'Copywriting',
       'Mobile optimization',
       'SEO',
     ],
@@ -140,12 +141,20 @@ const projects = [
       <>
         Positioning shift from <strong>barbershop to barber college</strong>—admissions-ready story, program clarity,
         embedded <strong>course catalog</strong>, and <strong>LMS</strong> integration with a polished mobile
-        experience throughout.
+        experience throughout, plus technical <strong>SEO</strong> foundations for program and location discovery.
       </>
     ),
     outcome:
       'A serious first impression for students and partners: credibility for a regulated training environment, smoother discovery of programs, and a path from browse to enrollment. They loved the finished site enough to refer us to more people who want websites.',
-    stack: ['Website design', 'Branding', 'Mobile optimization', 'Course catalog', 'LMS integration'],
+    stack: [
+      'Website design',
+      'Branding',
+      'Copywriting',
+      'Mobile optimization',
+      'SEO',
+      'Course catalog',
+      'LMS integration',
+    ],
     techStack: [
       'Vite',
       'React',
@@ -162,12 +171,20 @@ const projects = [
     improved: (
       <>
         First professional web presence—built from zero with a tight <strong>brand</strong>, mobile-optimized
-        layouts, and <strong>service narratives</strong> that translate complex scans into plain-language value.
+        layouts, technical <strong>SEO</strong> foundations, and <strong>service narratives</strong> that translate
+        complex scans into plain-language value.
       </>
     ),
     outcome:
       'Qualified buyers understand what you do, when to call, and why it matters—fewer wrong-fit inquiries and more confident outreach from GCs and property stakeholders.',
-    stack: ['Website design (greenfield)', 'Branding', 'Mobile optimization', 'Service positioning'],
+    stack: [
+      'Website design (greenfield)',
+      'Branding',
+      'Copywriting',
+      'Mobile optimization',
+      'SEO',
+      'Service positioning',
+    ],
     techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Lucide React'],
     url: 'https://eliteprecisiongprv1preview.netlify.app/',
   },
