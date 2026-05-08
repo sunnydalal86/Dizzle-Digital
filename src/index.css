@@ -294,7 +294,7 @@ body {
   position: relative;
   isolation: isolate;
   background-color: #0a0908;
-  color: #faf8f5;
+  color: #fffefb;
 }
 
 /* Visual layers begin below fixed Navbar (logo row + py-4); keeps rocket art off the chrome bar */
@@ -335,7 +335,8 @@ body {
 }
 
 .hero-cinematic-root .font-kicker {
-  color: color-mix(in srgb, #e88758 52%, #f5ebe3);
+  color: color-mix(in srgb, #ffcab0 8%, #ffffff);
+  font-size: clamp(0.75rem, 1.08vw, 0.875rem);
 }
 
 .hero-cinematic-root .hero-kicker {
@@ -481,6 +482,8 @@ body {
   inset: 0;
   width: 100%;
   height: 100%;
+  /* Slight fade so type reads cleaner over the photo */
+  opacity: 0.92;
 }
 
 .hero-bg-art__img {
@@ -497,12 +500,12 @@ body {
   background-color: #0a0908;
 }
 
-/* Neutral darkening veil — avoids lowering img opacity (lets charcoal bleed through / reads softer). */
+/* Neutral darkening veil — uniform black tint so copy stays readable */
 .hero-bg-art__tone {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: rgb(10 9 8 / 0.1);
+  background: rgb(0 0 0 / 0.7);
 }
 
 .hero-bg-art__blend {
@@ -533,17 +536,29 @@ body {
 
 .hero-headline-primary {
   text-shadow:
-    0 1px 0 color-mix(in srgb, #fff 38%, transparent),
-    0 2px 8px color-mix(in srgb, #fff 14%, transparent),
-    0 3px 10px color-mix(in srgb, #000 62%, transparent),
-    0 14px 40px color-mix(in srgb, #000 52%, transparent),
-    0 28px 72px color-mix(in srgb, #000 34%, transparent);
+    0 1px 0 color-mix(in srgb, #fff 62%, transparent),
+    0 2px 14px color-mix(in srgb, #fff 28%, transparent),
+    0 4px 12px color-mix(in srgb, #000 52%, transparent),
+    0 16px 44px color-mix(in srgb, #000 44%, transparent),
+    0 30px 76px color-mix(in srgb, #000 28%, transparent);
+}
+
+.hero-intro-subcopy {
+  font-size: clamp(0.875rem, 0.82vw + 0.74rem, 0.9375rem);
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.9),
+    0 10px 36px rgba(0, 0, 0, 0.65);
 }
 
 .hero-copy-stack .hero-kicker {
   text-shadow:
     0 1px 0 color-mix(in srgb, #000 22%, transparent),
-    0 6px 28px rgba(0, 0, 0, 0.38);
+    0 2px 12px rgba(0, 0, 0, 0.48),
+    0 0 18px rgba(255, 170, 120, 0.42),
+    0 0 36px rgba(255, 130, 70, 0.32),
+    0 0 56px rgba(255, 100, 50, 0.22),
+    0 0 1px rgba(255, 255, 255, 0.92),
+    0 1px 3px rgba(255, 252, 248, 0.65);
 }
 
 .hero-line-reveal.visible .hero-line-reveal__inner {
