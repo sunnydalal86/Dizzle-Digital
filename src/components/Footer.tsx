@@ -15,7 +15,7 @@ export default function Footer() {
             Dizzle Digital, LLC
           </p>
           <p className="mt-6 max-w-sm text-sm font-light leading-[1.82] text-[color:color-mix(in_srgb,var(--color-dd-muted)_94%,var(--color-dd-text))]" style={{ fontWeight: 300 }}>
-            A founder-led studio for growing businesses — premium websites with clear strategy, reliable delivery, and design
+            A founder-led studio for local businesses — premium websites with clear strategy, reliable delivery, and design
             you are happy to stand behind.
           </p>
         </div>
@@ -23,8 +23,8 @@ export default function Footer() {
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[color:var(--color-dd-muted)]">Navigate</p>
             <nav className="mt-10 flex flex-col gap-5 text-sm font-medium text-[color:color-mix(in_srgb,var(--color-dd-text)_72%,var(--color-dd-muted))]">
-              <a href="#portfolio" className="transition-colors duration-[420ms] [transition-timing-function:var(--dd-motion-soft)] hover:text-[color:var(--color-dd-accent)]">
-                Portfolio
+              <a href="#case-studies" className="transition-colors duration-[420ms] [transition-timing-function:var(--dd-motion-soft)] hover:text-[color:var(--color-dd-accent)]">
+                Case Studies
               </a>
               <a href="#services" className="transition-colors duration-[420ms] [transition-timing-function:var(--dd-motion-soft)] hover:text-[color:var(--color-dd-accent)]">
                 Services

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from './Button';
 
 const links = [
-  { href: '#portfolio', label: 'Portfolio' },
+  { href: '#case-studies', label: 'Case Studies' },
   { href: '#services', label: 'Services' },
   { href: '#value', label: 'Value' },
   { href: '#process', label: 'Process' },

@@ -1,30 +1,73 @@
-import type { CSSProperties } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 import Section from './Section';
 import Button from './Button';
+
+type CaseStudyProject = {
+  title: string;
+  industry: string;
+  improved: ReactNode;
+  outcome: string;
+  stack: readonly string[];
+  techStack: readonly string[];
+  url: string;
+  testimonial?: {
+    quote: string;
+    author: string;
+    role: string;
+  };
+};
 
 /** Logical CSS pixels for mobile layout breakpoints inside the iframe. */
 const MOBILE_VIEWPORT_W = 390;
 const MOBILE_VIEWPORT_H = 844;
+
+function CaseStudyField({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    <div className="border-t border-[color:color-mix(in_srgb,var(--color-dd-text)_9%,transparent)] pt-7 first:border-t-0 first:pt-0">
+      <p className="font-[family-name:var(--font-sans)] text-[10px] font-semibold uppercase tracking-[0.28em] text-[color:var(--color-dd-muted)]">
+        {label}
+      </p>
+      <div className="mt-3 text-[1.0625rem] font-light leading-[1.72] text-[color:color-mix(in_srgb,var(--color-dd-muted)_92%,var(--color-dd-text))] [&_strong]:font-medium [&_strong]:text-[color:var(--color-dd-text)]">
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function TagPills({ tags }: { tags: readonly string[] }) {
+  return (
+    <ul className="flex flex-wrap gap-2">
+      {tags.map((tag) => (
+        <li
+          key={tag}
+          className="rounded-full border border-[color:color-mix(in_srgb,var(--color-dd-text)_12%,transparent)] bg-[color:color-mix(in_srgb,var(--color-dd-off-white)_55%,transparent)] px-3.5 py-1.5 text-[12px] font-medium leading-none tracking-[0.02em] text-[color:color-mix(in_srgb,var(--color-dd-muted)_88%,var(--color-dd-text))]"
+        >
+          {tag}
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 /**
  * Scaled live preview in an iPhone-style frame; iframe uses mobile width so sites render their mobile breakpoints.
  */
 function PortfolioSitePreview({ url, title }: { url: string; title: string }) {
   return (
-    <div className="flex w-full justify-center py-2 sm:py-4">
+    <div className="flex w-full justify-center py-1 sm:py-2">
       <div
-        className="relative w-full max-w-[min(100%,17.5rem)] shrink-0"
+        className="relative w-full max-w-[min(100%,24rem)] shrink-0"
         style={
           {
-            filter: 'drop-shadow(0 22px 40px rgba(42, 40, 37, 0.12)) drop-shadow(0 8px 16px rgba(42, 40, 37, 0.06))',
+            filter: 'drop-shadow(0 28px 48px rgba(42, 40, 37, 0.14)) drop-shadow(0 12px 24px rgba(42, 40, 37, 0.07))',
           } as CSSProperties
         }
       >
         {/* Device body */}
-        <div className="relative rounded-[2.35rem] border border-[color:color-mix(in_srgb,var(--color-dd-text)_16%,transparent)] bg-gradient-to-b from-[#3a3836] to-[#1f1e1d] p-[9px] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12)]">
+        <div className="relative rounded-[2.5rem] border border-[color:color-mix(in_srgb,var(--color-dd-text)_16%,transparent)] bg-gradient-to-b from-[#3a3836] to-[#1f1e1d] p-[10px] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12)]">
           {/* Screen */}
           <div
-            className="relative w-full overflow-hidden rounded-[1.65rem] bg-black ring-1 ring-black/40 [container-type:inline-size]"
+            className="relative w-full overflow-hidden rounded-[1.75rem] bg-black ring-1 ring-black/40 [container-type:inline-size]"
             style={{
               aspectRatio: `${MOBILE_VIEWPORT_W} / ${MOBILE_VIEWPORT_H}`,
             }}
@@ -48,10 +91,7 @@ function PortfolioSitePreview({ url, title }: { url: string; title: string }) {
             </div>
           </div>
           {/* Home indicator */}
-          <div
-            aria-hidden
-            className="mx-auto mt-2.5 h-1 w-[92px] rounded-full bg-white/22"
-          />
+          <div aria-hidden className="mx-auto mt-3 h-1 w-[92px] rounded-full bg-white/22" />
         </div>
       </div>
     </div>
@@ -60,35 +100,83 @@ function PortfolioSitePreview({ url, title }: { url: string; title: string }) {
 
 const projects = [
   {
-    category: 'Construction / Remodeling',
     title: 'Pristine Construction',
-    description:
-      'High-trust photography and layout that sells premium remodeling without leaning on tired contractor clichés.',
+    industry: 'Construction & remodeling',
+    improved: (
+      <>
+        Full revamp from a limiting <strong>Squarespace</strong> template—new structure and layout, refreshed brand
+        expression, <strong>portfolio galleries</strong> reworked into a refined, high-end, gallery-forward presentation,
+        plus mobile-first polish and technical <strong>SEO</strong> foundations.
+      </>
+    ),
+    outcome:
+      'A high-trust site that matches premium craft: clearer services, stronger credibility, and a presence that earns inquiries without default contractor clichés.',
+    stack: [
+      'Squarespace → custom revamp',
+      'Branding',
+      'Mobile optimization',
+      'SEO',
+    ],
+    techStack: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'Framer Motion',
+      'Netlify',
+    ],
     url: 'https://pristineconstructionv1preview.netlify.app/',
-    domain: 'pristineconstruction…',
+    testimonial: {
+      quote:
+        'Really impressed—the site looks professional, simple, and clean. Best money I’ve ever spent. Loving it; great work.',
+      author: 'Allan Garcia',
+      role: 'CEO, Pristine Construction',
+    },
   },
   {
-    category: 'Education / Barber Academy',
     title: 'Premium Barber College',
-    description:
-      'A credible first impression for admissions and programs — clear story, strong visuals, and an experience that feels as serious as the training.',
+    industry: 'Barber education & training',
+    improved: (
+      <>
+        Positioning shift from <strong>barbershop to barber college</strong>—admissions-ready story, program clarity,
+        embedded <strong>course catalog</strong>, and <strong>LMS</strong> integration with a polished mobile
+        experience throughout.
+      </>
+    ),
+    outcome:
+      'A serious first impression for students and partners: credibility for a regulated training environment, smoother discovery of programs, and a path from browse to enrollment. They loved the finished site enough to refer us to more people who want websites.',
+    stack: ['Website design', 'Branding', 'Mobile optimization', 'Course catalog', 'LMS integration'],
+    techStack: [
+      'Vite',
+      'React',
+      'JavaScript (JSX)',
+      'Tailwind CSS',
+      'Framer Motion',
+      'Lucide React',
+    ],
     url: 'https://premiumbarbercollege.com/',
-    domain: 'premiumbarbercollege.com',
   },
   {
-    category: 'Technical Services',
     title: 'Elite Precision GPR',
-    description:
-      'Technical services explained in plain language — so the right clients understand the value and know how to reach you.',
+    industry: 'Geophysical & subsurface services',
+    improved: (
+      <>
+        First professional web presence—built from zero with a tight <strong>brand</strong>, mobile-optimized
+        layouts, and <strong>service narratives</strong> that translate complex scans into plain-language value.
+      </>
+    ),
+    outcome:
+      'Qualified buyers understand what you do, when to call, and why it matters—fewer wrong-fit inquiries and more confident outreach from GCs and property stakeholders.',
+    stack: ['Website design (greenfield)', 'Branding', 'Mobile optimization', 'Service positioning'],
+    techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Lucide React'],
     url: 'https://eliteprecisiongprv1preview.netlify.app/',
-    domain: 'eliteprecisiongpr…',
   },
-] as const;
+] satisfies CaseStudyProject[];
 
 export default function Portfolio() {
   return (
     <Section
-      id="portfolio"
+      id="case-studies"
       className="dd-from-hero-bridge dd-surface-grain relative scroll-mt-36 overflow-hidden sm:scroll-mt-40 py-14 sm:py-18 lg:py-[min(6.5rem,11vw)]"
     >
       <div
@@ -96,76 +184,101 @@ export default function Portfolio() {
         className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[min(48%,620px)] bg-[radial-gradient(ellipse_72%_78%_at_68%_-8%,color-mix(in_srgb,var(--color-dd-champagne-light)_42%,transparent),transparent_70%)]"
       />
 
-      <div className="relative z-[1] mx-auto max-w-[88rem] px-4 sm:px-8 lg:px-12 xl:px-16">
+      <div className="relative z-[1] mx-auto max-w-[92rem] px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="reveal-on-scroll flex max-w-4xl flex-col gap-12 lg:flex-row lg:items-end lg:justify-between lg:gap-20 xl:gap-28">
           <div className="max-w-3xl">
-            <p className="font-kicker text-[color:var(--color-dd-muted)]">Portfolio</p>
+            <p className="font-kicker text-[color:var(--color-dd-muted)]">Case Studies</p>
             <h2 className="mt-7 font-[family-name:var(--font-display)] text-[clamp(3rem,5.85vw,4.875rem)] font-semibold leading-[1.02] tracking-[-0.022em] text-[color:var(--color-dd-text)]">
-              Selected launches for{' '}
+              Selected work with{' '}
               <span className="font-normal italic text-[color:color-mix(in_srgb,var(--color-dd-accent)_85%,var(--color-dd-text))]">
-                brands that invest in how they look online
+                industry context, outcomes, and craft
               </span>
-              .
+              —not a thumbnail wall.
             </h2>
           </div>
           <p
-            className="max-w-[22rem] text-[1.0625rem] font-light leading-[1.72] text-[color:color-mix(in_srgb,var(--color-dd-muted)_94%,var(--color-dd-text))] lg:pb-2"
+            className="max-w-[24rem] text-[1.0625rem] font-light leading-[1.72] text-[color:color-mix(in_srgb,var(--color-dd-muted)_94%,var(--color-dd-text))] lg:pb-2"
             style={{ fontWeight: 300 }}
           >
-            Each site is designed to feel memorable on a phone, confident on a desktop, and easy for real customers to use.
+            Each project is documented like a case study: who it serves, what changed, why it mattered, and what we used to
+            ship it—then a live preview you can open in full.
           </p>
         </div>
 
-        <div className="mt-28 flex flex-col gap-28 lg:mt-40 lg:gap-40">
+        <div className="mt-28 flex flex-col gap-20 sm:gap-24 lg:mt-40 lg:gap-32">
           {projects.map((p, i) => {
             const previewOnLeft = i % 2 === 0;
             return (
               <article
                 key={p.title}
-                className="reveal-on-scroll group relative lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16"
+                className="reveal-on-scroll premium-card relative z-[2] overflow-hidden p-6 sm:p-9 lg:p-12 xl:p-14"
                 style={{ '--reveal-delay': `${i * 100}ms` } as CSSProperties}
               >
-                <div
-                  className={`premium-card relative z-[2] overflow-hidden p-5 sm:p-7 lg:p-9 ${
-                    previewOnLeft ? 'lg:col-span-8 lg:col-start-1' : 'lg:col-span-8 lg:col-start-5'
-                  } lg:row-start-1`}
-                >
-                  <p className="mb-4 text-center font-[family-name:var(--font-sans)] text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--color-dd-muted)]">
-                    {p.domain}
-                  </p>
-                  <PortfolioSitePreview url={p.url} title={p.title} />
-                </div>
-
-                <div
-                  className={`relative mt-16 flex flex-col justify-center lg:mt-0 lg:min-h-[200px] ${
-                    previewOnLeft ? 'lg:col-span-4 lg:col-start-9' : 'lg:col-span-4 lg:col-start-1'
-                  } lg:row-start-1`}
-                >
+                <div className="grid gap-12 lg:grid-cols-12 lg:items-start lg:gap-x-14 xl:gap-x-20">
                   <div
-                    aria-hidden
-                    className={`pointer-events-none absolute top-[10%] hidden h-[72%] w-56 rounded-[length:var(--dd-radius-xl)] bg-gradient-to-b from-[color:color-mix(in_srgb,var(--color-dd-accent-soft)_88%,transparent)] to-transparent blur-3xl lg:block ${
-                      previewOnLeft ? '-left-24' : '-right-24'
-                    }`}
-                  />
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.32em] text-[color:var(--color-dd-accent)]">
-                    {p.category}
-                  </span>
-                  <h3 className="mt-6 font-[family-name:var(--font-display)] text-[clamp(2rem,3.2vw,2.75rem)] font-semibold tracking-[-0.02em] text-[color:var(--color-dd-text)] transition-colors duration-[420ms] [transition-timing-function:var(--dd-motion-soft)] group-hover:text-[color:color-mix(in_srgb,var(--color-dd-text)_94%,var(--color-dd-accent))]">
-                    {p.title}
-                  </h3>
-                  <p className="mt-8 text-[1.0625rem] font-light leading-[1.75] text-[color:color-mix(in_srgb,var(--color-dd-muted)_94%,var(--color-dd-text))]" style={{ fontWeight: 300 }}>
-                    {p.description}
-                  </p>
-                  <div className="mt-12">
-                    <Button
-                      variant="secondary"
-                      href={p.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="!tracking-[0.2em]"
-                    >
-                      Open live site
-                    </Button>
+                    className={`flex flex-col lg:col-span-5 ${
+                      previewOnLeft ? 'lg:col-start-8' : 'lg:col-start-1'
+                    } ${previewOnLeft ? 'order-1 lg:order-2' : 'order-1 lg:order-1'}`}
+                  >
+                    <div
+                      aria-hidden
+                      className={`pointer-events-none absolute top-[18%] hidden h-[52%] w-64 rounded-[length:var(--dd-radius-xl)] bg-gradient-to-b from-[color:color-mix(in_srgb,var(--color-dd-accent-soft)_88%,transparent)] to-transparent blur-3xl lg:block ${
+                        previewOnLeft ? '-right-16 xl:-right-24' : '-left-16 xl:-left-24'
+                      }`}
+                    />
+                    <p className="font-[family-name:var(--font-sans)] text-[10px] font-semibold uppercase tracking-[0.32em] text-[color:var(--color-dd-accent)]">
+                      Case study
+                    </p>
+                    <h3 className="mt-5 font-[family-name:var(--font-display)] text-[clamp(2.125rem,3.6vw,3rem)] font-semibold tracking-[-0.022em] text-[color:var(--color-dd-text)]">
+                      {p.title}
+                    </h3>
+
+                    <div className="mt-10 space-y-0">
+                      <CaseStudyField label="Industry">{p.industry}</CaseStudyField>
+                      <CaseStudyField label="What we improved">{p.improved}</CaseStudyField>
+                      <CaseStudyField label="Business outcome">{p.outcome}</CaseStudyField>
+                      {p.testimonial ? (
+                        <CaseStudyField label="Client feedback">
+                          <blockquote className="m-0 border-0 p-0">
+                            <p className="font-normal italic leading-[1.72]">
+                              &ldquo;{p.testimonial.quote}&rdquo;
+                            </p>
+                            <footer className="mt-4 font-[family-name:var(--font-sans)] text-[13px] font-normal not-italic leading-snug tracking-[0.02em] text-[color:var(--color-dd-muted)]">
+                              <cite className="font-semibold not-italic text-[color:color-mix(in_srgb,var(--color-dd-muted)_20%,var(--color-dd-text))]">
+                                {p.testimonial.author}
+                              </cite>
+                              <span className="mt-0.5 block">{p.testimonial.role}</span>
+                            </footer>
+                          </blockquote>
+                        </CaseStudyField>
+                      ) : null}
+                      <CaseStudyField label="Stack & services">
+                        <TagPills tags={p.stack} />
+                      </CaseStudyField>
+                      <CaseStudyField label="Tech stack">
+                        <TagPills tags={p.techStack} />
+                      </CaseStudyField>
+                    </div>
+
+                    <div className="relative z-[1] mt-10">
+                      <Button
+                        variant="secondary"
+                        href={p.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="!tracking-[0.2em]"
+                      >
+                        Open live site
+                      </Button>
+                    </div>
+                  </div>
+
+                  <div
+                    className={`flex flex-col justify-center lg:col-span-7 ${
+                      previewOnLeft ? 'lg:col-start-1' : 'lg:col-start-6'
+                    } ${previewOnLeft ? 'order-2 lg:order-1' : 'order-2 lg:order-2'}`}
+                  >
+                    <PortfolioSitePreview url={p.url} title={p.title} />
                   </div>
                 </div>
               </article>

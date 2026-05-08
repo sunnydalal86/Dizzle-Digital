@@ -47,7 +47,9 @@ export default function Hero() {
           <div className="min-h-0 flex-1 basis-0" aria-hidden />
           <div className="flex w-full shrink-0 flex-col items-start">
             <div className="hero-copy-stack relative w-full max-w-[min(42rem,calc(100vw-2.5rem))] text-left lg:max-w-[min(38rem,100%)] xl:max-w-[41rem]">
-              <p className="font-kicker hero-kicker reveal-on-scroll">Premium websites. Real growth.</p>
+              <p className="font-kicker hero-kicker reveal-on-scroll">
+                Helping local businesses modernize their digital presence
+              </p>
 
               <h1 className="reveal-on-scroll mt-9 text-[color:#fffcfa] font-[family-name:var(--font-hero-condensed)] text-[clamp(2.45rem,8.8vw,6.75rem)] font-normal uppercase leading-[0.95] tracking-[0.02em] lg:mt-11 [transition-delay:40ms]">
                 <span className="block hero-headline-primary whitespace-nowrap">
@@ -70,8 +72,7 @@ export default function Hero() {
               <p
                 className="hero-intro-subcopy reveal-on-scroll max-w-2xl font-light leading-[1.85] text-[color:#fffefb] [transition-delay:140ms] lg:max-w-[34rem] lg:flex-1 lg:min-w-0"
               >
-                If your business is ready to look as sharp online as it does in person, we&apos;ll design a fast, clear site
-                that builds trust — and makes the next step obvious for every visitor.
+                Premium websites for businesses ready to look established, earn trust, and generate more leads.
               </p>
             </div>
           </div>
