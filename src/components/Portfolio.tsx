@@ -24,17 +24,28 @@ function PortfolioSitePreview({ url, title }: { url: string; title: string }) {
         <div className="relative rounded-[2.35rem] border border-[color:color-mix(in_srgb,var(--color-dd-text)_16%,transparent)] bg-gradient-to-b from-[#3a3836] to-[#1f1e1d] p-[9px] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12)]">
           {/* Screen */}
           <div
-            className="@container relative w-full overflow-hidden rounded-[1.65rem] bg-black ring-1 ring-black/40"
-            style={{ aspectRatio: `${MOBILE_VIEWPORT_W} / ${MOBILE_VIEWPORT_H}` }}
+            className="relative w-full overflow-hidden rounded-[1.65rem] bg-black ring-1 ring-black/40 [container-type:inline-size]"
+            style={{
+              aspectRatio: `${MOBILE_VIEWPORT_W} / ${MOBILE_VIEWPORT_H}`,
+            }}
           >
-            <iframe
-              src={url}
-              title={`Mobile preview — ${title}`}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              style={{ width: MOBILE_VIEWPORT_W, height: MOBILE_VIEWPORT_H }}
-              className={`pointer-events-none absolute left-0 top-0 block border-0 origin-top-left [transform:scale(calc(100cqw/${MOBILE_VIEWPORT_W}px))]`}
-            />
+            <div
+              className="pointer-events-none absolute left-0 top-0"
+              style={{
+                width: MOBILE_VIEWPORT_W,
+                height: MOBILE_VIEWPORT_H,
+                transform: `scale(calc(100cqw / ${MOBILE_VIEWPORT_W}px))`,
+                transformOrigin: 'top left',
+              }}
+            >
+              <iframe
+                src={url}
+                title={`Mobile preview — ${title}`}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="pointer-events-none block h-full w-full border-0"
+              />
+            </div>
           </div>
           {/* Home indicator */}
           <div
