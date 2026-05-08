@@ -78,7 +78,7 @@ export default function Portfolio() {
   return (
     <Section
       id="portfolio"
-      className="dd-from-hero-bridge dd-surface-grain relative scroll-mt-36 overflow-hidden sm:scroll-mt-40 py-36 sm:py-48 lg:py-[min(13rem,18vw)]"
+      className="dd-from-hero-bridge dd-surface-grain relative scroll-mt-36 overflow-hidden sm:scroll-mt-40 py-14 sm:py-18 lg:py-[min(6.5rem,11vw)]"
     >
       <div
         aria-hidden
