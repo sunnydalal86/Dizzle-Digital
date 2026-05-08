@@ -9,12 +9,12 @@ const steps = [
   {
     phase: '02',
     title: 'Direction',
-    detail: 'Information architecture + visual language calibrated to how you actually win.',
+    detail: 'Site structure and visual direction aligned with how customers actually choose you.',
   },
   {
     phase: '03',
     title: 'Build',
-    detail: 'Design fidelity, breakpoints, choreography — validated on phones first.',
+    detail: 'Design fidelity across screen sizes — validated on phones first, then refined for desktop.',
   },
   {
     phase: '04',
@@ -33,10 +33,10 @@ export default function Process() {
         <div className="reveal-on-scroll max-w-3xl">
           <p className="font-kicker text-[color:var(--color-dd-muted)]">Process</p>
           <h2 className="mt-7 font-[family-name:var(--font-display)] text-[clamp(2.875rem,5.15vw,4.125rem)] font-semibold leading-[1.03] tracking-[-0.022em] text-[color:var(--color-dd-text)]">
-            Four phases. Zero theatre.
+            A straightforward process. No drama.
           </h2>
           <p className="mt-10 max-w-xl text-[1.0625rem] font-light leading-[1.74] text-[color:color-mix(in_srgb,var(--color-dd-muted)_94%,var(--color-dd-text))]" style={{ fontWeight: 300 }}>
-            Momentum-forward collaboration built for founders who dislike vague retainers.
+            Direct communication and clear milestones — built for owners who want progress, not vague retainers.
           </p>
         </div>
 

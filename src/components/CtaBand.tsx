@@ -28,20 +28,21 @@ export default function CtaBand() {
             id="cta-heading"
             className="relative mt-9 font-[family-name:var(--font-display)] text-[clamp(2.5rem,5vw,4rem)] font-semibold leading-[1.05] tracking-[-0.022em] text-[color:var(--color-dd-text)]"
           >
-            Your standards already belong in the foreground.{' '}
+            Ready for a website that matches how you run your business?{' '}
             <span className="mt-2 block font-normal italic text-[color:color-mix(in_srgb,var(--color-dd-accent)_88%,var(--color-dd-text))]">
-              Put the site beside them.
+              Let&apos;s make it happen.
             </span>
           </h2>
           <p
             className="relative mx-auto mt-12 max-w-lg text-[1.0625rem] font-light leading-[1.74] text-[color:color-mix(in_srgb,var(--color-dd-muted)_94%,var(--color-dd-text))]"
             style={{ fontWeight: 300 }}
           >
-            Let&apos;s shape a presence that earns trust quietly — cinematic, disciplined, unmistakably yours.
+            Tell us what you are building. We&apos;ll reply with a clear plan, an honest timeline, and a site that looks sharp,
+            feels modern, and earns trust from the first scroll — unmistakably yours.
           </p>
           <div className="relative mt-16 flex justify-center">
             <Button variant="primary" href="#contact" className="!px-12">
-              Start a project
+              Let&apos;s build something
             </Button>
           </div>
         </div>

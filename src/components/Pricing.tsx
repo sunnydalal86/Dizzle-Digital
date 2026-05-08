@@ -21,7 +21,7 @@ const tiers = [
     name: 'Premium Build',
     price: '$4,000',
     label: 'Starting at',
-    bullets: ['For brands raising the bar — bespoke pacing, cinematic galleries, and a flagship finish end to end.'],
+    bullets: ['For brands ready to raise the bar — custom layout, rich galleries, and a polished finish from first visit to contact.'],
     highlight: false,
   },
 ];
@@ -36,7 +36,7 @@ export default function Pricing() {
         <div className="reveal-on-scroll max-w-3xl">
           <p className="font-kicker text-[color:var(--color-dd-muted)]">Investment</p>
           <h2 className="mt-7 font-[family-name:var(--font-display)] text-[clamp(2.875rem,5.15vw,4.125rem)] font-semibold leading-[1.03] tracking-[-0.022em] text-[color:var(--color-dd-text)]">
-            Clear anchors.{' '}
+            Straightforward ranges.{' '}
             <span className="font-normal italic text-[color:color-mix(in_srgb,var(--color-dd-accent)_88%,var(--color-dd-text))]">
               Serious craft.
             </span>
@@ -91,7 +91,7 @@ export default function Pricing() {
                 ))}
               </ul>
               <Button variant={tier.highlight ? 'primary' : 'secondary'} href="#contact" className="mt-14 w-full !py-4">
-                Start a project
+                Start your project
               </Button>
             </article>
           ))}

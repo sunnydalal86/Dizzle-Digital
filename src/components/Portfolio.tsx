@@ -2,47 +2,77 @@ import type { CSSProperties } from 'react';
 import Section from './Section';
 import Button from './Button';
 
-/** Live scaled homepage preview — fills card width. */
+/** Logical CSS pixels for mobile layout breakpoints inside the iframe. */
+const MOBILE_VIEWPORT_W = 390;
+const MOBILE_VIEWPORT_H = 844;
+
+/**
+ * Scaled live preview in an iPhone-style frame; iframe uses mobile width so sites render their mobile breakpoints.
+ */
 function PortfolioSitePreview({ url, title }: { url: string; title: string }) {
   return (
-    <div className="@container relative aspect-[21/10] min-h-[clamp(15rem,38vw,22rem)] w-full overflow-hidden rounded-[length:var(--dd-radius-md)] bg-[#eae6df] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.55)]">
-      <iframe
-        src={url}
-        title={`Homepage preview — ${title}`}
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-        className="pointer-events-none absolute left-0 top-0 block border-0 [height:820px] [width:1440px] origin-top-left [transform:scale(calc(100cqw/1440px))]"
-      />
+    <div className="flex w-full justify-center py-2 sm:py-4">
+      <div
+        className="relative w-full max-w-[min(100%,17.5rem)] shrink-0"
+        style={
+          {
+            filter: 'drop-shadow(0 22px 40px rgba(42, 40, 37, 0.12)) drop-shadow(0 8px 16px rgba(42, 40, 37, 0.06))',
+          } as CSSProperties
+        }
+      >
+        {/* Device body */}
+        <div className="relative rounded-[2.35rem] border border-[color:color-mix(in_srgb,var(--color-dd-text)_16%,transparent)] bg-gradient-to-b from-[#3a3836] to-[#1f1e1d] p-[9px] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12)]">
+          {/* Screen */}
+          <div
+            className="@container relative w-full overflow-hidden rounded-[1.65rem] bg-black ring-1 ring-black/40"
+            style={{ aspectRatio: `${MOBILE_VIEWPORT_W} / ${MOBILE_VIEWPORT_H}` }}
+          >
+            <iframe
+              src={url}
+              title={`Mobile preview — ${title}`}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              style={{ width: MOBILE_VIEWPORT_W, height: MOBILE_VIEWPORT_H }}
+              className={`pointer-events-none absolute left-0 top-0 block border-0 origin-top-left [transform:scale(calc(100cqw/${MOBILE_VIEWPORT_W}px))]`}
+            />
+          </div>
+          {/* Home indicator */}
+          <div
+            aria-hidden
+            className="mx-auto mt-2.5 h-1 w-[92px] rounded-full bg-white/22"
+          />
+        </div>
+      </div>
     </div>
   );
 }
 
 const projects = [
   {
-    category: 'Education / Barber Academy',
-    title: 'Premium Barber College',
-    description:
-      'A polished flagship built for credibility — programs, admissions, and a sense of craft before guests walk through the door.',
-    url: 'https://premiumbarbercollege.com/',
-    domain: 'premiumbarbercollege.com',
-  },
-  {
     category: 'Construction / Remodeling',
     title: 'Pristine Construction',
     description:
-      'High-trust visuals and restraint where it counts — framing premium remodeling without drowning in cliché.',
+      'High-trust photography and layout that sells premium remodeling without leaning on tired contractor clichés.',
     url: 'https://pristineconstructionv1preview.netlify.app/',
     domain: 'pristineconstruction…',
+  },
+  {
+    category: 'Education / Barber Academy',
+    title: 'Premium Barber College',
+    description:
+      'A credible first impression for admissions and programs — clear story, strong visuals, and an experience that feels as serious as the training.',
+    url: 'https://premiumbarbercollege.com/',
+    domain: 'premiumbarbercollege.com',
   },
   {
     category: 'Technical Services',
     title: 'Elite Precision GPR',
     description:
-      'Complex services, quiet confidence — explanations that invite the right inquiries, clearly and quickly.',
+      'Technical services explained in plain language — so the right clients understand the value and know how to reach you.',
     url: 'https://eliteprecisiongprv1preview.netlify.app/',
     domain: 'eliteprecisiongpr…',
   },
-];
+] as const;
 
 export default function Portfolio() {
   return (
@@ -58,11 +88,11 @@ export default function Portfolio() {
       <div className="relative z-[1] mx-auto max-w-[88rem] px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="reveal-on-scroll flex max-w-4xl flex-col gap-12 lg:flex-row lg:items-end lg:justify-between lg:gap-20 xl:gap-28">
           <div className="max-w-3xl">
-            <p className="font-kicker text-[color:var(--color-dd-muted)]">Selected launches</p>
+            <p className="font-kicker text-[color:var(--color-dd-muted)]">Selected work</p>
             <h2 className="mt-7 font-[family-name:var(--font-display)] text-[clamp(3rem,5.85vw,4.875rem)] font-semibold leading-[1.02] tracking-[-0.022em] text-[color:var(--color-dd-text)]">
-              Work presented like a{' '}
+              Recent work for{' '}
               <span className="font-normal italic text-[color:color-mix(in_srgb,var(--color-dd-accent)_85%,var(--color-dd-text))]">
-                campaign
+                brands that invest in how they look online
               </span>
               .
             </h2>
@@ -71,105 +101,65 @@ export default function Portfolio() {
             className="max-w-[22rem] text-[1.0625rem] font-light leading-[1.72] text-[color:color-mix(in_srgb,var(--color-dd-muted)_94%,var(--color-dd-text))] lg:pb-2"
             style={{ fontWeight: 300 }}
           >
-            Large canvases, quiet motion, and editorial pacing — crafted for operators who refuse to blend in.
+            Each site is designed to feel memorable on a phone, confident on a desktop, and easy for real customers to use.
           </p>
         </div>
 
         <div className="mt-28 flex flex-col gap-28 lg:mt-40 lg:gap-40">
-          {/* Featured */}
-          <article className="reveal-on-scroll group relative lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
-            <div className="premium-card relative z-[2] overflow-hidden p-5 sm:p-7 lg:col-span-8 lg:p-9">
-              <div className="glass-panel mb-7 flex flex-wrap items-center gap-4 rounded-[length:var(--dd-radius-md)] px-5 py-3 shadow-none">
-                <div className="flex gap-2">
-                  <span className="h-3 w-3 rounded-full border border-black/10 bg-[#f6e3dd]" />
-                  <span className="h-3 w-3 rounded-full border border-black/10 bg-[#eae6cf]" />
-                  <span className="h-3 w-3 rounded-full border border-black/10 bg-[#dde8db]" />
-                </div>
-                <div className="min-w-0 flex-1 text-center font-[family-name:var(--font-sans)] text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--color-dd-muted)]">
-                  {projects[0].domain}
-                </div>
-              </div>
-              <PortfolioSitePreview url={projects[0].url} title={projects[0].title} />
-            </div>
-
-            <div className="relative mt-16 flex flex-col justify-center lg:col-span-4 lg:mt-0 lg:min-h-[200px]">
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -left-24 top-[10%] hidden h-[72%] w-56 rounded-[length:var(--dd-radius-xl)] bg-gradient-to-b from-[color:color-mix(in_srgb,var(--color-dd-accent-soft)_88%,transparent)] to-transparent blur-3xl lg:block"
-              />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.32em] text-[color:var(--color-dd-accent)]">
-                {projects[0].category}
-              </span>
-              <h3 className="mt-6 font-[family-name:var(--font-display)] text-[clamp(2rem,3.2vw,2.75rem)] font-semibold tracking-[-0.02em] text-[color:var(--color-dd-text)] transition-colors duration-[420ms] [transition-timing-function:var(--dd-motion-soft)] group-hover:text-[color:color-mix(in_srgb,var(--color-dd-text)_94%,var(--color-dd-accent))]">
-                {projects[0].title}
-              </h3>
-              <p className="mt-8 text-[1.0625rem] font-light leading-[1.75] text-[color:color-mix(in_srgb,var(--color-dd-muted)_94%,var(--color-dd-text))]" style={{ fontWeight: 300 }}>
-                {projects[0].description}
-              </p>
-              <div className="mt-12">
-                <Button
-                  variant="secondary"
-                  href={projects[0].url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="!tracking-[0.2em]"
-                >
-                  Open live site
-                </Button>
-              </div>
-            </div>
-          </article>
-
-          <div className="grid gap-24 lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
-            {projects.slice(1).map((p, i) => (
+          {projects.map((p, i) => {
+            const previewOnLeft = i % 2 === 0;
+            return (
               <article
                 key={p.title}
-                className="reveal-on-scroll premium-card group flex flex-col overflow-hidden"
-                style={{ '--reveal-delay': `${140 + i * 90}ms` } as CSSProperties}
+                className="reveal-on-scroll group relative lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16"
+                style={{ '--reveal-delay': `${i * 100}ms` } as CSSProperties}
               >
-                <div className="border-b border-[color:color-mix(in_srgb,var(--color-dd-border)_100%,transparent)] bg-[color:color-mix(in_srgb,var(--color-dd-off-white)_90%,transparent)] px-7 py-4">
-                  <div className="flex items-center gap-3">
-                    <div className="flex gap-1.5 opacity-90">
-                      <span className="h-2 w-2 rounded-full bg-[#e8d5ce]" />
-                      <span className="h-2 w-2 rounded-full bg-[#e8e2cd]" />
-                      <span className="h-2 w-2 rounded-full bg-[#d5e5d8]" />
-                    </div>
-                    <div className="mx-auto min-w-0 flex-1 truncate text-center text-[10px] font-semibold uppercase tracking-[0.26em] text-[color:var(--color-dd-muted)]">
-                      {p.domain}
-                    </div>
-                  </div>
+                <div
+                  className={`premium-card relative z-[2] overflow-hidden p-5 sm:p-7 lg:p-9 ${
+                    previewOnLeft ? 'lg:col-span-8 lg:col-start-1' : 'lg:col-span-8 lg:col-start-5'
+                  } lg:row-start-1`}
+                >
+                  <p className="mb-4 text-center font-[family-name:var(--font-sans)] text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--color-dd-muted)]">
+                    {p.domain}
+                  </p>
+                  <PortfolioSitePreview url={p.url} title={p.title} />
                 </div>
 
-                <div className="relative overflow-hidden p-5 pb-3 sm:p-6">
-                  <PortfolioSitePreview url={p.url} title={p.title} />
+                <div
+                  className={`relative mt-16 flex flex-col justify-center lg:mt-0 lg:min-h-[200px] ${
+                    previewOnLeft ? 'lg:col-span-4 lg:col-start-9' : 'lg:col-span-4 lg:col-start-1'
+                  } lg:row-start-1`}
+                >
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute inset-x-12 bottom-0 h-32 bg-[linear-gradient(180deg,transparent,rgba(250,248,244,0.92))]"
+                    className={`pointer-events-none absolute top-[10%] hidden h-[72%] w-56 rounded-[length:var(--dd-radius-xl)] bg-gradient-to-b from-[color:color-mix(in_srgb,var(--color-dd-accent-soft)_88%,transparent)] to-transparent blur-3xl lg:block ${
+                      previewOnLeft ? '-left-24' : '-right-24'
+                    }`}
                   />
-                </div>
-
-                <div className="flex flex-1 flex-col px-9 pb-12 pt-4 sm:px-11 sm:pb-14">
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[color:var(--color-dd-accent)]">
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.32em] text-[color:var(--color-dd-accent)]">
                     {p.category}
                   </span>
-                  <h3 className="mt-5 font-[family-name:var(--font-display)] text-[clamp(1.75rem,2.8vw,2.125rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-[color:var(--color-dd-text)] transition-colors duration-[420ms] [transition-timing-function:var(--dd-motion-soft)] group-hover:text-[color:color-mix(in_srgb,var(--color-dd-text)_94%,var(--color-dd-accent))]">
+                  <h3 className="mt-6 font-[family-name:var(--font-display)] text-[clamp(2rem,3.2vw,2.75rem)] font-semibold tracking-[-0.02em] text-[color:var(--color-dd-text)] transition-colors duration-[420ms] [transition-timing-function:var(--dd-motion-soft)] group-hover:text-[color:color-mix(in_srgb,var(--color-dd-text)_94%,var(--color-dd-accent))]">
                     {p.title}
                   </h3>
-                  <p className="mt-6 flex-1 text-[1.0625rem] font-light leading-[1.74] text-[color:color-mix(in_srgb,var(--color-dd-muted)_94%,var(--color-dd-text))]" style={{ fontWeight: 300 }}>
+                  <p className="mt-8 text-[1.0625rem] font-light leading-[1.75] text-[color:color-mix(in_srgb,var(--color-dd-muted)_94%,var(--color-dd-text))]" style={{ fontWeight: 300 }}>
                     {p.description}
                   </p>
-                  <a
-                    href={p.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-10 inline-flex origin-left text-[11px] font-semibold uppercase tracking-[0.26em] text-[color:var(--color-dd-accent)] underline decoration-[color:color-mix(in_srgb,var(--color-dd-accent)_38%,transparent)] decoration-1 underline-offset-[10px] transition-all duration-[420ms] [transition-timing-function:var(--dd-motion-soft)] hover:decoration-[color:var(--color-dd-accent)] hover:underline-offset-[14px]"
-                  >
-                    View live
-                  </a>
+                  <div className="mt-12">
+                    <Button
+                      variant="secondary"
+                      href={p.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="!tracking-[0.2em]"
+                    >
+                      Open live site
+                    </Button>
+                  </div>
                 </div>
               </article>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </div>
     </Section>

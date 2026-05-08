@@ -45,7 +45,7 @@ export default function Contact() {
             </span>
           </h2>
           <p className="mt-12 text-[1.0625rem] font-light leading-[1.74] text-[color:color-mix(in_srgb,var(--color-dd-muted)_94%,var(--color-dd-text))]" style={{ fontWeight: 300 }}>
-            Share ambition, timeline, and what excellence looks like on your terms. Prefer to write direct?{' '}
+            Share your goals, timeline, and what a win looks like for you. Prefer email?{' '}
             <a
               href="mailto:hello@dizzledigital.com"
               className="font-medium text-[color:var(--color-dd-accent)] underline decoration-[color:color-mix(in_srgb,var(--color-dd-accent)_42%,transparent)] underline-offset-[5px] transition-colors duration-[420ms] [transition-timing-function:var(--dd-motion-soft)] hover:decoration-[color:var(--color-dd-accent)]"
@@ -110,7 +110,7 @@ export default function Contact() {
             )}
           </div>
           <p className="text-xs font-light text-[color:color-mix(in_srgb,var(--color-dd-muted)_94%,var(--color-dd-text))]" style={{ fontWeight: 300 }}>
-            Submits through your inbox — intentional, transparent, zero middleman drip.
+            Opens in your email app — simple, direct, no middleman.
           </p>
         </form>
       </div>

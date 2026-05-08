@@ -15,8 +15,8 @@ export default function Footer() {
             Dizzle Digital, LLC
           </p>
           <p className="mt-6 max-w-sm text-sm font-light leading-[1.82] text-[color:color-mix(in_srgb,var(--color-dd-muted)_94%,var(--color-dd-text))]" style={{ fontWeight: 300 }}>
-            A founder-led studio for ambitious businesses — brand-grade websites with the discipline of a product team and
-            the taste of a creative shop.
+            A founder-led studio for growing businesses — premium websites with clear strategy, reliable delivery, and design
+            you are happy to stand behind.
           </p>
         </div>
         <div className="grid gap-20 sm:grid-cols-2 sm:gap-28 lg:gap-36">

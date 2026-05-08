@@ -48,7 +48,7 @@ export default function Navbar() {
 
           <div className="shrink-0 lg:pl-2 xl:pl-3">
             <Button variant="primary" href="#contact" className="!py-3 !text-[11px] !tracking-[0.2em] lg:!px-7 xl:!px-8">
-              Start a project
+              Start your project
             </Button>
           </div>
         </div>
@@ -89,7 +89,7 @@ export default function Navbar() {
             </a>
           ))}
           <Button variant="primary" href="#contact" className="mt-3 !py-3.5" onClick={() => setOpen(false)}>
-            Start a project
+            Start your project
           </Button>
         </nav>
       </div>

@@ -1,14 +1,14 @@
 import Section from './Section';
 
 const outcomes = [
-  'A sharper first impression',
-  'Confidence with discerning buyers',
-  'Messaging that survives comparison',
-  'Mobile-first choreography',
-  'Lead paths shaped like your sales motion',
-  'Launch velocity without sacrificing finish',
-  'Lean, adaptable front-end craftsmanship',
-  'A flagship you’re honored to forward',
+  'A stronger first impression in seconds',
+  'Confidence with discerning, comparison-shopping buyers',
+  'Messaging that holds up next to competitors',
+  'Mobile-first layouts that feel effortless',
+  'Lead paths shaped around how you actually sell',
+  'Fast launches without cutting corners on quality',
+  'Clean, maintainable front-end work',
+  'A site you are proud to send people to',
 ];
 
 export default function WhatYouPayFor() {
@@ -33,8 +33,8 @@ export default function WhatYouPayFor() {
               </span>
             </h2>
             <p className="mt-12 text-[1.0625rem] font-light leading-[1.78] text-[color:color-mix(in_srgb,var(--color-dd-muted)_94%,var(--color-dd-text))]" style={{ fontWeight: 300 }}>
-              Beyond decoration — a commercial asset calibrated for attention spans, reputational risk, and the moment prospects
-              cross-shop you quietly on their phones.
+              You are not buying decoration — you are investing in a sales asset built for short attention spans, reputational
+              risk, and the moment prospects quietly compare you on their phone.
             </p>
           </div>
 
