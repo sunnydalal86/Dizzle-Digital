@@ -1,7 +1,7 @@
 /**
  * Builds public/og-image.png (1200×630).
  *
- * If public/og-assets/og-master.jpg exists, it is scaled with cover + bottom anchor
+ * If public/og-assets/og-master.png or og-master.jpg exists, it is scaled with cover + bottom anchor
  * (keeps footer/logo zones when cropping to OG aspect). Otherwise builds hero + keyed logo.
  *
  * Run: npm run generate:og
@@ -14,7 +14,8 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, '..');
 
-const MASTER_OG = path.join(root, 'public/og-assets/og-master.jpg');
+const MASTER_OG_PNG = path.join(root, 'public/og-assets/og-master.png');
+const MASTER_OG_JPG = path.join(root, 'public/og-assets/og-master.jpg');
 const HERO = path.join(root, 'public/og-assets/hero-source.jpg');
 const LOGO = path.join(root, 'public/og-assets/logo-source.jpg');
 const OUT = path.join(root, 'public/og-image.png');
@@ -39,12 +40,13 @@ function keyBlackToAlpha(data, width, height, thLo = 28, thHi = 72) {
   }
 }
 
-async function buildFromMaster() {
-  await sharp(MASTER_OG)
+async function buildFromMaster(masterPath) {
+  const base = path.basename(masterPath);
+  await sharp(masterPath)
     .resize(OG_W, OG_H, { fit: 'cover', position: 'south' })
     .png({ compressionLevel: 9 })
     .toFile(OUT);
-  console.log(`Wrote ${OUT} (${OG_W}×${OG_H}) from og-master.jpg (cover, south)`);
+  console.log(`Wrote ${OUT} (${OG_W}×${OG_H}) from ${base} (cover, south)`);
 }
 
 async function buildComposite() {
@@ -95,8 +97,12 @@ async function buildComposite() {
 }
 
 async function main() {
-  if (existsSync(MASTER_OG)) {
-    await buildFromMaster();
+  if (existsSync(MASTER_OG_PNG)) {
+    await buildFromMaster(MASTER_OG_PNG);
+    return;
+  }
+  if (existsSync(MASTER_OG_JPG)) {
+    await buildFromMaster(MASTER_OG_JPG);
     return;
   }
   await buildComposite();
