@@ -10,7 +10,42 @@ import CtaBand from './components/CtaBand';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
+function OgPreviewDev() {
+  return (
+    <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-[#0f0f12] p-6 text-[#e8e6e3]">
+      <div className="max-w-xl text-center">
+        <h1 className="text-base font-semibold tracking-wide">Open Graph preview (1200 × 630)</h1>
+        <p className="mt-2 text-sm text-[#989498]">
+          Uses <code className="text-[#c4b8c8]">/og-image.png</code> from the dev server. Run{' '}
+          <code className="text-[#c4b8c8]">npm run generate:og</code> if it is missing.
+        </p>
+      </div>
+      <div
+        className="w-full max-w-[960px] overflow-hidden rounded-xl shadow-[0_24px_80px_rgba(0,0,0,0.55)] ring-1 ring-white/[0.06]"
+        style={{ aspectRatio: '1200 / 630' }}
+      >
+        <img
+          src="/og-image.png"
+          width={1200}
+          height={630}
+          alt="OG composite preview"
+          className="h-full w-full bg-[#1a1a1f] object-contain"
+          decoding="async"
+          fetchPriority="high"
+        />
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
+  if (import.meta.env.DEV && typeof window !== 'undefined') {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('ogPreview') === '1') {
+      return <OgPreviewDev />;
+    }
+  }
+
   return (
     <>
       <a
