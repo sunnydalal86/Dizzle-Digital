@@ -99,9 +99,9 @@ export default function Portfolio() {
       <div className="relative z-[1] mx-auto max-w-[88rem] px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="reveal-on-scroll flex max-w-4xl flex-col gap-12 lg:flex-row lg:items-end lg:justify-between lg:gap-20 xl:gap-28">
           <div className="max-w-3xl">
-            <p className="font-kicker text-[color:var(--color-dd-muted)]">Selected work</p>
+            <p className="font-kicker text-[color:var(--color-dd-muted)]">Portfolio</p>
             <h2 className="mt-7 font-[family-name:var(--font-display)] text-[clamp(3rem,5.85vw,4.875rem)] font-semibold leading-[1.02] tracking-[-0.022em] text-[color:var(--color-dd-text)]">
-              Recent work for{' '}
+              Selected launches for{' '}
               <span className="font-normal italic text-[color:color-mix(in_srgb,var(--color-dd-accent)_85%,var(--color-dd-text))]">
                 brands that invest in how they look online
               </span>

@@ -24,7 +24,7 @@ export default function Footer() {
             <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[color:var(--color-dd-muted)]">Navigate</p>
             <nav className="mt-10 flex flex-col gap-5 text-sm font-medium text-[color:color-mix(in_srgb,var(--color-dd-text)_72%,var(--color-dd-muted))]">
               <a href="#portfolio" className="transition-colors duration-[420ms] [transition-timing-function:var(--dd-motion-soft)] hover:text-[color:var(--color-dd-accent)]">
-                Work
+                Portfolio
               </a>
               <a href="#services" className="transition-colors duration-[420ms] [transition-timing-function:var(--dd-motion-soft)] hover:text-[color:var(--color-dd-accent)]">
                 Services

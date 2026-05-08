@@ -64,7 +64,7 @@ export default function Hero() {
             <div className="flex w-full flex-col items-start gap-6 sm:gap-7 lg:flex-row lg:items-center lg:gap-12 xl:gap-14">
               <div className="reveal-on-scroll shrink-0 [transition-delay:120ms]">
                 <Button variant="primary" href="#contact" className={`rounded-xl px-9 py-3.5 sm:py-4 ${btnHeroTalk}`}>
-                  Let&apos;s Talk
+                  Start Your Website
                 </Button>
               </div>
               <p

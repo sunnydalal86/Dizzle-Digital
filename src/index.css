@@ -673,3 +673,34 @@ body {
     -webkit-backdrop-filter: blur(12px);
   }
 }
+
+/* Hero → body: infinite service ticker (summarizes pricing offerings) */
+@keyframes dd-marquee-scroll {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.dd-marquee-static {
+  display: none;
+  margin: 0;
+}
+
+.dd-marquee-track {
+  animation: dd-marquee-scroll 52s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dd-marquee-track {
+    animation: none;
+  }
+
+  .dd-marquee-wrap {
+    display: none;
+  }
+
+  .dd-marquee-static {
+    display: block;
+  }
+}

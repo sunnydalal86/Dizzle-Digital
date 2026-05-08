@@ -1,5 +1,6 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import HeroServicesMarquee from './components/HeroServicesMarquee';
 import Portfolio from './components/Portfolio';
 import Services from './components/Services';
 import WhatYouPayFor from './components/WhatYouPayFor';
@@ -21,6 +22,7 @@ export default function App() {
       <Navbar />
       <main id="main">
         <Hero />
+        <HeroServicesMarquee />
         <Portfolio />
         <Services />
         <WhatYouPayFor />
