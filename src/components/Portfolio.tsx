@@ -200,21 +200,26 @@ export default function Portfolio() {
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[min(48%,620px)] bg-[radial-gradient(ellipse_72%_78%_at_68%_-8%,color-mix(in_srgb,var(--color-dd-champagne-light)_42%,transparent),transparent_70%)]"
       />
+      {/* Bright field under intro copy so dark type reads on the hero bridge without a card */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[min(62%,720px)] bg-[radial-gradient(ellipse_92%_115%_at_20%_10%,color-mix(in_srgb,var(--color-dd-off-white)_82%,var(--color-dd-bg)),transparent_72%)]"
+      />
 
       <div className="relative z-[1] mx-auto max-w-[92rem] px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="reveal-on-scroll flex max-w-4xl flex-col gap-12 lg:flex-row lg:items-end lg:justify-between lg:gap-20 xl:gap-28">
           <div className="max-w-3xl">
-            <p className="font-kicker text-[color:var(--color-dd-muted)]">Case Studies</p>
-            <h2 className="mt-7 font-[family-name:var(--font-display)] text-[clamp(3rem,5.85vw,4.875rem)] font-semibold leading-[1.02] tracking-[-0.022em] text-[color:var(--color-dd-text)]">
+            <p className="font-kicker text-[color:var(--color-dd-accent)]">Case Studies</p>
+            <h2 className="mt-7 font-[family-name:var(--font-display)] text-[clamp(3rem,5.85vw,4.875rem)] font-semibold leading-[1.02] tracking-[-0.022em] text-[color:color-mix(in_srgb,var(--color-dd-text)_62%,#0a0908)]">
               Selected work with{' '}
-              <span className="font-normal italic text-[color:color-mix(in_srgb,var(--color-dd-accent)_85%,var(--color-dd-text))]">
+              <span className="font-normal italic text-[color:var(--color-dd-accent)]">
                 industry context, outcomes, and craft
               </span>
               —not a thumbnail wall.
             </h2>
           </div>
           <p
-            className="max-w-[24rem] text-[1.0625rem] font-light leading-[1.72] text-[color:color-mix(in_srgb,var(--color-dd-muted)_94%,var(--color-dd-text))] lg:pb-2"
+            className="max-w-[24rem] text-[1.0625rem] font-light leading-[1.72] text-[color:color-mix(in_srgb,var(--color-dd-muted)_68%,var(--color-dd-text))] lg:pb-2"
             style={{ fontWeight: 300 }}
           >
             Each project is documented like a case study: who it serves, what changed, why it mattered, and what we used to
