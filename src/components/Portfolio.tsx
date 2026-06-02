@@ -126,7 +126,7 @@ const projects = [
       'Framer Motion',
       'Netlify',
     ],
-    url: 'https://pristineconstructionv1preview.netlify.app/',
+    url: 'https://pristineconstructionllc.com/',
     testimonial: {
       quote:
         'Really impressed—the site looks professional, simple, and clean. Best money I’ve ever spent. Loving it; great work.',
