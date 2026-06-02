@@ -116,12 +116,10 @@ export default function Contact() {
           />
           <Field
             label="Current website (optional)"
-            type="url"
             name="website"
             value={form.website}
             onChange={handleChange}
-            autoComplete="url"
-            placeholder="https://"
+            placeholder="yoursite.com, Instagram, etc."
           />
           <Field
             label="What are we building?"

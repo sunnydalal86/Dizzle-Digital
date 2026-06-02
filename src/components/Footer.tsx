@@ -41,12 +41,12 @@ export default function Footer() {
             </nav>
           </div>
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[color:var(--color-dd-muted)]">Email</p>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[color:var(--color-dd-muted)]">Contact</p>
             <a
-              href="mailto:hello@dizzledigital.com"
+              href="tel:+15105523496"
               className="mt-10 inline-block text-sm font-semibold tracking-wide text-[color:var(--color-dd-accent)] transition-colors duration-[420ms] [transition-timing-function:var(--dd-motion-soft)] hover:text-[color:var(--color-dd-accent-hover)]"
             >
-              hello@dizzledigital.com
+              510-552-3496
             </a>
             <p className="mt-14 text-[13px] font-light text-[color:color-mix(in_srgb,var(--color-dd-muted)_92%,transparent)]">
               © {new Date().getFullYear()} Dizzle Digital. All rights reserved.
