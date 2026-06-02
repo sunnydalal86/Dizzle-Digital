@@ -2,6 +2,8 @@ import { useState, type ChangeEvent, type FormEvent, type CSSProperties } from '
 import Section from './Section';
 import Button from './Button';
 
+const FORM_NAME = 'contact';
+
 const initialForm = {
   name: '',
   business: '',
@@ -12,22 +14,42 @@ const initialForm = {
 
 export default function Contact() {
   const [form, setForm] = useState(initialForm);
+  const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
 
   function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const { name, value } = e.target;
     setForm((f) => ({ ...f, [name]: value }));
   }
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const subject = encodeURIComponent(`Project inquiry — ${form.business || 'Unknown business'}`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nBusiness: ${form.business}\nEmail: ${form.email}\nWebsite: ${form.website || '(none)'}\n\nProject details:\n${form.message}`
-    );
-    window.location.href = `mailto:hello@dizzledigital.com?subject=${subject}&body=${body}`;
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4500);
+    setSubmitting(true);
+    setError(false);
+
+    const formEl = e.currentTarget;
+    const body = new URLSearchParams(new FormData(formEl) as unknown as Record<string, string>).toString();
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body,
+      });
+
+      if (!response.ok) {
+        throw new Error('Form submission failed');
+      }
+
+      setSubmitted(true);
+      setForm(initialForm);
+      setTimeout(() => setSubmitted(false), 6000);
+    } catch {
+      setError(true);
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -45,21 +67,33 @@ export default function Contact() {
             </span>
           </h2>
           <p className="mt-12 text-[1.0625rem] font-light leading-[1.74] text-[color:color-mix(in_srgb,var(--color-dd-muted)_94%,var(--color-dd-text))]" style={{ fontWeight: 300 }}>
-            Share your goals, timeline, and what a win looks like for you. Prefer email?{' '}
+            Share your goals, timeline, and what a win looks like for you. Prefer texting? Reach us at{' '}
             <a
-              href="mailto:hello@dizzledigital.com"
+              href="tel:+15105523496"
               className="font-medium text-[color:var(--color-dd-accent)] underline decoration-[color:color-mix(in_srgb,var(--color-dd-accent)_42%,transparent)] underline-offset-[5px] transition-colors duration-[420ms] [transition-timing-function:var(--dd-motion-soft)] hover:decoration-[color:var(--color-dd-accent)]"
             >
-              hello@dizzledigital.com
+              510-552-3496
             </a>
+            .
           </p>
         </div>
 
         <form
+          name={FORM_NAME}
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
           onSubmit={handleSubmit}
           className="reveal-on-scroll premium-card space-y-10 rounded-[length:var(--dd-radius-xl)] p-11 hover:!translate-y-0 sm:p-14"
           style={{ '--reveal-delay': '70ms' } as CSSProperties}
         >
+          <input type="hidden" name="form-name" value={FORM_NAME} />
+          <p className="hidden" aria-hidden="true">
+            <label>
+              Don&apos;t fill this out: <input name="bot-field" tabIndex={-1} autoComplete="off" />
+            </label>
+          </p>
+
           <div className="grid gap-10 sm:grid-cols-2">
             <Field label="Name" name="name" value={form.name} required onChange={handleChange} autoComplete="name" />
             <Field
@@ -100,17 +134,22 @@ export default function Contact() {
           />
 
           <div className="flex flex-wrap items-center gap-8 pt-2">
-            <Button type="submit" variant="primary">
-              Send inquiry
+            <Button type="submit" variant="primary" disabled={submitting}>
+              {submitting ? 'Sending…' : 'Send inquiry'}
             </Button>
             {submitted && (
               <span className="text-sm font-medium text-[color:var(--color-dd-accent)]" role="status">
-                Opening your mail app…
+                Message sent — we&apos;ll be in touch soon.
+              </span>
+            )}
+            {error && (
+              <span className="text-sm font-medium text-[color:color-mix(in_srgb,#8b3a3a_88%,var(--color-dd-text))]" role="alert">
+                Something went wrong. Try again or text us at 510-552-3496.
               </span>
             )}
           </div>
           <p className="text-xs font-light text-[color:color-mix(in_srgb,var(--color-dd-muted)_94%,var(--color-dd-text))]" style={{ fontWeight: 300 }}>
-            Opens in your email app — simple, direct, no middleman.
+            Your inquiry is delivered securely — no mail app required.
           </p>
         </form>
       </div>
