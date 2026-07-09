@@ -10,6 +10,8 @@ type CaseStudyProject = {
   stack: readonly string[];
   techStack: readonly string[];
   url: string;
+  /** Set true to keep the entry in code but omit it from the site. */
+  hidden?: boolean;
   testimonial?: {
     quote: string;
     author: string;
@@ -167,6 +169,7 @@ const projects = [
   },
   {
     title: 'Elite Precision GPR',
+    hidden: true,
     industry: 'Geophysical & subsurface services',
     improved: (
       <>
@@ -228,7 +231,7 @@ export default function Portfolio() {
         </div>
 
         <div className="mt-28 flex flex-col gap-20 sm:gap-24 lg:mt-40 lg:gap-32">
-          {projects.map((p, i) => {
+          {projects.filter((p) => !p.hidden).map((p, i) => {
             const previewOnLeft = i % 2 === 0;
             return (
               <article
