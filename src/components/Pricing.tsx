@@ -16,18 +16,32 @@ type PricingPackage = {
 
 const packages: PricingPackage[] = [
   {
+    kicker: 'Website package',
+    title: 'Starter Website',
+    priceLabel: 'Starting at',
+    price: '$750',
+    description:
+      'A professional one-page website designed to generate leads and establish credibility.',
+    features: [
+      'Custom responsive design',
+      'Mobile optimized',
+      'Contact form integration',
+      'Basic SEO setup',
+      'Fast performance',
+      'Professional copy guidance',
+    ],
+    cta: 'Get Started',
+    revealDelay: '0ms',
+  },
+  {
     kicker: 'Most popular',
     title: 'Business Website',
     priceLabel: 'Starting at',
     price: '$1,500',
     description:
-      'A custom website built to generate leads, showcase your services, and establish credibility—scoped from a focused one-page site to a full multi-page presence.',
+      'A custom multi-page website built to showcase your services, portfolio, and business story.',
     features: [
-      'Custom responsive design',
-      'Mobile optimized',
-      'Contact form integration',
-      'Fast performance',
-      'Professional copy guidance',
+      'Everything in Starter Website',
       'Multiple custom pages',
       'Portfolio / gallery sections',
       'Advanced SEO structure',
@@ -36,7 +50,7 @@ const packages: PricingPackage[] = [
     ],
     cta: 'Request Proposal',
     featured: true,
-    revealDelay: '0ms',
+    revealDelay: '75ms',
   },
   {
     kicker: 'Custom scope',
@@ -53,7 +67,7 @@ const packages: PricingPackage[] = [
       'Tailored project scoping',
     ],
     cta: 'Schedule Consultation',
-    revealDelay: '75ms',
+    revealDelay: '150ms',
   },
 ];
 
@@ -189,7 +203,7 @@ export default function Pricing() {
             className="mt-10 max-w-2xl text-[1.0625rem] font-light leading-[1.74] text-[color:color-mix(in_srgb,var(--color-dd-muted)_94%,var(--color-dd-text))]"
             style={{ fontWeight: 300 }}
           >
-            Two clear paths — from a polished business website to fully custom builds — each scoped to your goals, audience,
+            Three clear paths — from a focused starter site to fully custom builds — each scoped to your goals, audience,
             and growth stage.
           </p>
           <p
@@ -201,7 +215,7 @@ export default function Pricing() {
           </p>
         </div>
 
-        <div className="mt-32 grid grid-cols-1 items-stretch gap-10 sm:gap-12 lg:mt-40 lg:mx-auto lg:max-w-5xl lg:grid-cols-2 lg:gap-x-8 xl:gap-x-10">
+        <div className="mt-32 grid grid-cols-1 items-stretch gap-10 sm:gap-12 lg:mt-40 lg:grid-cols-3 lg:gap-x-8 xl:gap-x-10">
           {packages.map((pkg) => (
             <PricingCard key={pkg.title} pkg={pkg} />
           ))}
